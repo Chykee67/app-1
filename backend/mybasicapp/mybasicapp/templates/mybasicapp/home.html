@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    Welcome {{request.user}}!
+    <h1>Home</h1>
+    <p>Welcome to the home page</p>
+    <p>
+        <a href="{% url 'todo:view_all_tasks' %}">See all todo tasks</a>
+    </p>
+    <p>
+        <a href="">See pending todo tasks</a>
+    </p>
+    <p>
+        <a href="{% url 'todo:add_task' %}">Make a new todo task entry</a>
+    </p>
+    <p>
+        <a href="">Edit a todo task entry</a><!--This'll b a form, compltd tasks cn only b markd as pending b4 4da edits-->
+</body>
+</html>
