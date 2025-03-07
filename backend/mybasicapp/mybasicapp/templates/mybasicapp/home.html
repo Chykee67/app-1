@@ -11,12 +11,26 @@
         <a href="{% url 'todo:view_all_tasks' %}">See all todo tasks</a>
     </p>
     <p>
-        <a href="">See pending todo tasks</a>
+        <a href="{% url 'todo:view_pending_tasks' %}">See pending todo tasks</a>
+    </p>
+    <p>
+        <a href="{% url 'todo:view_completed_tasks' %}">See completed todo tasks</a>
     </p>
     <p>
         <a href="{% url 'todo:add_task' %}">Make a new todo task entry</a>
     </p>
-    <p>
-        <a href="">Edit a todo task entry</a><!--This'll b a form, compltd tasks cn only b markd as pending b4 4da edits-->
+
+    {% if request.user.is_authenticated %}
+        <p>
+            <a href="{% url 'user_auth:signout' %}">Sign Out</a>
+        </p>
+    {% else %}
+        <p>
+            <a href="{% url 'user_auth:signin' %}">Sign In</a>
+        </p>
+        <p>
+            <a href="{% url 'user_auth:signup' %}">Sign Up</a>
+        </p>
+    {% endif %}
 </body>
 </html>

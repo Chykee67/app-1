@@ -13,3 +13,11 @@ class AllTasksView(ListView):
 
     def get_queryset(self):
         return Task.objects.filter(created_by=self.request.user)
+    
+class PendingTasksView(AllTasksView):
+    def get_queryset(self):
+        return Task.objects.filter(created_by=self.request.user, status='Pending')
+    
+class CompletedTasksView(AllTasksView):
+    def get_queryset(self):
+        return Task.objects.filter(created_by=self.request.user, status='Completed')

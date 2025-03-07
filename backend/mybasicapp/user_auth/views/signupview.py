@@ -29,7 +29,7 @@ class SignupView(View):
                 })
             else:
                 if user:
-                    return redirect('/')
+                    return redirect('user_auth:signin')
                 else:
                     return render(request, 'user_auth/signup.html', {
                         'form': SignupForm(),
