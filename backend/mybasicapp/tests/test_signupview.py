@@ -1,0 +1,49 @@
+from django.test import TestCase
+from django.contrib.auth.models import User
+
+class TestSignupView(TestCase):
+
+    def test_get(self):
+        response = self.client.get('/signup/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'user_auth/signup.html')
+
+    def test_post_valid_form(self):
+        response = self.client.post('/signup/', {
+            'username': 'testuser',
+            'email': 'testuser@mail.com',
+            'password1': 'testpassword',
+            'password2': 'testpassword',
+        })
+
+        self.assertRedirects(response, '/signin/')
+        self.assertEqual(User.objects.count(), 1)
+        self.assertEqual(User.objects.first().username, 'testuser')
+
+    def test_post_invalid_form_with_short_password(self):
+
+        response = self.client.post('/signup/', {
+            'username': 'testuser',
+            'email': 'testuser@mail.com',
+            'password1': 'short',
+            'password2': 'short',
+        })
+        
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'user_auth/signup.html')
+        self.assertContains(response, 'Password must be at least 8 characters long')
+
+    def test_post_invalid_form_with_mismatched_passwords(self):
+
+        response = self.client.post('/signup/', {
+            'username': 'testuser',
+            'email': 'testuser@mail.com',
+            'password1': 'testpassword',
+            'password2': 'testpassword1',
+        })
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'user_auth/signup.html')
+        self.assertContains(response, 'Passwords do not match')
+
+#Add more tests in production code

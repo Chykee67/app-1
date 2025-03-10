@@ -2,9 +2,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from todo.models import Task
 from todo.forms import AddTaskForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-
-class EditTaskView(View):
+class EditTaskView(LoginRequiredMixin, View):
     
     def get(self, request, task_id):
 
@@ -33,7 +33,7 @@ class EditTaskView(View):
             'task': task
         })
     
-class MarkTaskCompleteView(View):
+class MarkTaskCompleteView(LoginRequiredMixin, View):
     
     def get(self, request, task_id):
         
@@ -43,7 +43,7 @@ class MarkTaskCompleteView(View):
         
         return redirect('todo:task_detail', pk=task_id)
     
-class MarkTaskPendingView(View):
+class MarkTaskPendingView(LoginRequiredMixin, View):
     
     def get(self, request, task_id):
         
