@@ -1,0 +1,1 @@
+This is the django backend written to be rendered with the attached html templates
