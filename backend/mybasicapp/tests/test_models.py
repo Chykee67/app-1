@@ -1,10 +1,15 @@
 from django.test import TestCase
+from django.contrib.auth.models import User
 
-from mybasicapp.todo.models import Task
+from todo.models import Task
 
 class TaskModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
+        User.objects.create_user(
+            username='testuser',
+            password='testpassword',
+        )
         Task.objects.create(
             title='Test Task',
             description='This is a test task',
@@ -17,49 +22,49 @@ class TaskModelTest(TestCase):
     def test_title_label(self):
         task = Task.objects.get(id=1)
         field_label = task._meta.get_field('title').verbose_name
-        self.assertEquals(field_label, 'title')
+        self.assertEqual(field_label, 'title')
 
     def test_description_label(self):
         task = Task.objects.get(id=1)
         field_label = task._meta.get_field('description').verbose_name
-        self.assertEquals(field_label, 'description')
+        self.assertEqual(field_label, 'description')
 
     def test_due_label(self):
         task = Task.objects.get(id=1)
         field_label = task._meta.get_field('due').verbose_name
-        self.assertEquals(field_label, 'due')
+        self.assertEqual(field_label, 'due')
 
     def test_priority_label(self):
         task = Task.objects.get(id=1)
         field_label = task._meta.get_field('priority').verbose_name
-        self.assertEquals(field_label, 'priority')
+        self.assertEqual(field_label, 'priority')
 
     def test_status_label(self):
         task = Task.objects.get(id=1)
         field_label = task._meta.get_field('status').verbose_name
-        self.assertEquals(field_label, 'status')
+        self.assertEqual(field_label, 'status')
 
     def test_created_by_label(self):
         task = Task.objects.get(id=1)
         field_label = task._meta.get_field('created_by').verbose_name
-        self.assertEquals(field_label, 'created by')
+        self.assertEqual(field_label, 'created by')
     
     def test_title_max_length(self):
         task = Task.objects.get(id=1)
         max_length = task._meta.get_field('title').max_length
-        self.assertEquals(max_length, 200)
+        self.assertEqual(max_length, 200)
 
     def test_priority_max_length(self):
         task = Task.objects.get(id=1)
         max_length = task._meta.get_field('priority').max_length
-        self.assertEquals(max_length, 6)
+        self.assertEqual(max_length, 6)
 
     def test_status_max_length(self):
         task = Task.objects.get(id=1)
         max_length = task._meta.get_field('status').max_length
-        self.assertEquals(max_length, 9)
+        self.assertEqual(max_length, 9)
 
     def test_object_name_is_title_due_priority_status(self):
         task = Task.objects.get(id=1)
         expected_object_name = f"{task.title} - {task.due.strftime('%d-%m-%Y %H:%M')} - {task.priority} priority - {task.status}"
-        self.assertEquals(str(task), expected_object_name)
+        self.assertEqual(str(task), expected_object_name)

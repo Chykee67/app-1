@@ -14,6 +14,7 @@ class SignupForm(forms.Form):
         label='Email',
     )
     password1 = forms.CharField(
+        min_length=8,
         max_length=32,
         label='Password',
         widget=forms.PasswordInput(),

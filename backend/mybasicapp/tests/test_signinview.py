@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 class TestSigninView(TestCase):
 
@@ -11,12 +12,12 @@ class TestSigninView(TestCase):
         )
 
     def test_get(self):
-        response = self.client.get('/signin/')
+        response = self.client.get(reverse('user_auth:signin'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'user_auth/signin.html')
 
     def test_post_valid_form(self):
-        response = self.client.post('/signin/', {
+        response = self.client.post('/user_auth/signin/', {
             'username': 'testuser',
             'password': 'testpassword',
         })
@@ -25,7 +26,7 @@ class TestSigninView(TestCase):
         self.assertTrue('_auth_user_id' in self.client.session) # Check if user is logged in
     
     def test_post_invalid_form_with_wrong_password(self):
-        response = self.client.post('/signin/', {
+        response = self.client.post('/user_auth/signin/', {
             'username': 'testuser',
             'password': 'wrongpassword',
         })
@@ -35,7 +36,7 @@ class TestSigninView(TestCase):
         self.assertContains(response, 'Invalid credentials')
 
     def test_post_invalid_form_with_wrong_username(self):
-        response = self.client.post('/signin/', {
+        response = self.client.post('/user_auth/signin/', {
             'username': 'wronguser',
             'password': 'testpassword',
         })

@@ -17,7 +17,10 @@ class TestAllTasksView(TestCase):
             Task.objects.create(
                 title=f'Task {task_num}',
                 description=f'Task {task_num} description',
-                created_by=User.objects.get(username='testuser')
+                created_by=User.objects.get(username='testuser'),
+                due='2025-12-31 23:59',
+                priority='High',
+                status='Pending'
             )
 
 
@@ -40,7 +43,7 @@ class TestAllTasksView(TestCase):
         response = self.client.get(reverse('todo:view_pending_tasks'))
 
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'todo/pending_tasks.html')
+        self.assertTemplateUsed(response, 'todo/all_tasks.html')
         self.assertTrue('tasks' in response.context)
         self.assertEqual(len(response.context['tasks']), 10)
 
@@ -51,7 +54,7 @@ class TestAllTasksView(TestCase):
         response = self.client.get(reverse('todo:view_completed_tasks'))
 
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'todo/completed_tasks.html')
+        self.assertTemplateUsed(response, 'todo/all_tasks.html')
         self.assertTrue('tasks' in response.context)
         self.assertEqual(len(response.context['tasks']), 0)
 
@@ -94,3 +97,5 @@ class TestAllTasksView(TestCase):
         self.assertEqual(len(response2.context['tasks']), 10)
         self.assertEqual(len(response3.context['tasks']), 10)
         self.assertEqual(len(response4.context['tasks']), 0)
+
+        # write tests for the rest of the views later

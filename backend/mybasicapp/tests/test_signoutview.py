@@ -10,7 +10,7 @@ class TestSignoutView(TestCase):
         )
 
         self.client.login(username='testuser', password='testpassword')
-        response = self.client.get('/signout/')
+        response = self.client.get('/user_auth/signout/')
 
-        self.assertRedirects(response, '/signin/')
+        self.assertRedirects(response, '/user_auth/signin/')
         self.assertFalse('_auth_user_id' in self.client.session) # Check if user is logged out

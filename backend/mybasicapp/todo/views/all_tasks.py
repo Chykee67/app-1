@@ -9,7 +9,7 @@ class AllTasksView(ListView):
     template_name = 'todo/all_tasks.html'
     context_object_name = 'tasks'
     ordering = ['-due']
-    paginate_by = 5
+    paginate_by = 10
 
     def get_queryset(self):
         return Task.objects.filter(created_by=self.request.user)
