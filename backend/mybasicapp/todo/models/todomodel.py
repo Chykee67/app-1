@@ -1,6 +1,18 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
+PRIORITY_CHOICES = (
+    ('Low', 'Low'),
+    ('Normal', 'Normal'),
+    ('High', 'High')
+)
+
+STATUS_CHOICES = (
+    ('Pending', 'Pending'),
+    ('Completed', 'Completed')
+)
+
 class Task(models.Model):
 
     title = models.CharField(max_length=200)
@@ -13,11 +25,7 @@ class Task(models.Model):
     
     priority = models.CharField(
         max_length=6,
-        choices=(
-            ('Low', 'Low'),
-            ('Normal', 'Normal'),
-            ('High', 'High')
-        ),
+        choices=PRIORITY_CHOICES,
         default='Normal',
     )
     
@@ -25,10 +33,7 @@ class Task(models.Model):
     
     status = models.CharField(
         max_length=9,
-        choices=(
-            ('Pending', 'Pending'),
-            ('Completed', 'Completed')
-        ),
+        choices=STATUS_CHOICES,
         default='Pending',
     )
     

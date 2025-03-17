@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'mybasicapp',
     'user_auth',
     'todo',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

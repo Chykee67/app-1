@@ -1,1 +1,1 @@
-from .todomodel import Task
+from .todomodel import Task, PRIORITY_CHOICES, STATUS_CHOICES
