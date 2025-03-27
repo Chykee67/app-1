@@ -17,7 +17,7 @@
         <a href="{% url 'todo:view_completed_tasks' %}">See completed todo tasks</a>
     </p>
     <p>
-        <a href="{% url 'todo:add_task' %}">Make a new todo task entry</a>
+        <a href="{% url 'todo:create_task' %}">Make a new todo task entry</a>
     </p>
 
     {% if request.user.is_authenticated %}

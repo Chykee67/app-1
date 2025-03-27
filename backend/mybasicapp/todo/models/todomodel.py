@@ -15,7 +15,12 @@ STATUS_CHOICES = (
 
 class Task(models.Model):
 
-    title = models.CharField(max_length=200)
+    title = models.SlugField(
+        max_length=200,
+        unique=True,
+        allow_unicode=True,
+        primary_key=True
+    )
 
     description = models.TextField()
     
@@ -39,8 +44,8 @@ class Task(models.Model):
     
     created = models.DateTimeField(auto_now_add=True)
     
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE) #can i use 'auth.User' instead of User?
-    # created_by = models.ForeignKey('auth.User', on_delete=models.CASCADE) #can i use 'auth.User' instead of User?
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    #created_by = models.ForeignKey('auth.User', related_name='tasks', on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['due']

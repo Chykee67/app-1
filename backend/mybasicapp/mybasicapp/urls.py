@@ -17,11 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from .views import HomepageView
+from .views import HomepageView, AuthCheckView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomepageView.as_view(), name='home'),
+    path('authcheck/', AuthCheckView.as_view(), name='authcheck'),
     path('user_auth/', include('user_auth.urls')),
     path('todo/', include('todo.urls')),
 ]

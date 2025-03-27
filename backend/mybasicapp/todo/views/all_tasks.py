@@ -1,23 +1,38 @@
-from django.views.generic import ListView
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import permissions
+from rest_framework import status
+from rest_framework.authentication import SessionAuthentication
+
 from todo.models import Task
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
+from todo.serializers import TaskSerializer
+from todo.permissions import IsOwner
 
-@method_decorator(login_required, name='dispatch')
-class AllTasksView(ListView):
-    model = Task
-    template_name = 'todo/all_tasks.html'
-    context_object_name = 'tasks'
-    ordering = ['-due']
-    paginate_by = 10
+    
+class AllTasksView(APIView):
 
-    def get_queryset(self):
-        return Task.objects.filter(created_by=self.request.user)
+    permission_classes = [permissions.IsAuthenticated, IsOwner]
     
-class PendingTasksView(AllTasksView):
-    def get_queryset(self):
-        return Task.objects.filter(created_by=self.request.user, status='Pending')
+    def get(self, request):
+        print(request.user)
+        tasks = Task.objects.filter(created_by=request.user)
+        serializer = TaskSerializer(tasks, many=True)
+        return Response(serializer.data)
     
-class CompletedTasksView(AllTasksView):
-    def get_queryset(self):
-        return Task.objects.filter(created_by=self.request.user, status='Completed')
+    
+    
+class PendingTasksView(APIView):
+    def get(self, request):
+        tasks = Task.objects.filter(created_by=request.user, status='Pending')
+        serializer = TaskSerializer(tasks, many=True)
+        return Response(serializer.data)
+    
+    permission_classes = [permissions.IsAuthenticated, IsOwner]
+    
+class CompletedTasksView(APIView):
+    def get(self, request):
+        tasks = Task.objects.filter(created_by=request.user, status='Completed')
+        serializer = TaskSerializer(tasks, many=True)
+        return Response(serializer.data)
+    
+    permission_classes = [permissions.IsAuthenticated, IsOwner]

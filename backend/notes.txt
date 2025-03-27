@@ -1,0 +1,7 @@
+{
+    "title": "new task",
+    "description": "starting again slugified",
+    "due": "2025-09-08 14:15",
+    "priority": "Low",
+    "status": "Pending"
+}
