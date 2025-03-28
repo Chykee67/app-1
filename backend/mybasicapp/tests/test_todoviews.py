@@ -20,7 +20,7 @@ class TaskTests(APITestCase):
         url = reverse('todo:create_task')
 
         data = {
-            "title": "new task",
+            "title": "new-task",
             "description": "about this task",
             "due": "2025-08-08 09:00",
             "priority": "High",
@@ -32,6 +32,6 @@ class TaskTests(APITestCase):
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Task.objects.count(), 1)
-        self.assertEqual(Task.objects.get(id=1).title, "new task")
+        self.assertEqual(Task.objects.get(title='new-task').title, "new-task")
 
         self.client.logout()
