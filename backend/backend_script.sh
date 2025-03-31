@@ -6,6 +6,9 @@
 
 #install and setup python environment
 python3 -m venv .venv/djangodev/
+
+echo 'environment created'
+
 source .venv/djangodev/bin/activate
 
 #start nginx
