@@ -17,7 +17,7 @@ pipeline {
         stage("Deploy"){
             steps{
                 echo "Deploying ..."
-                sh 'python3 test.py'
+                sh 'ls backend'
             }
         }
     }
