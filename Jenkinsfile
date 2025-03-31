@@ -17,7 +17,7 @@ pipeline {
         stage("Deploy"){
             steps{
                 echo "Deploying ..."
-                sh 'ls backend'
+                sh './backend/backend_script.sh'
             }
         }
     }
