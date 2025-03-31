@@ -18,9 +18,6 @@ source .venv/djangodev/bin/activate
 pip install -r backend/backend_requirements.txt
 
 #start uwsgi application through ini file
-pip uninstall uwsgi
-
-sudo apt -S install libpcre3 libpcre3-dev
 
 pip install uwsgi -I --no-cache-dir
 
