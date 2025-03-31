@@ -18,6 +18,9 @@ pipeline {
             steps{
                 echo "Deploying ..."
                 sh 'pwd'
+                sh 'cd'
+                sh 'pwd'
+                sh 'ls'
             }
         }
     }
