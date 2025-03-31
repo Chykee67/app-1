@@ -1,24 +1,25 @@
 #install build-essential and python-dev
-#sudo apt install build-essential python3.12-dev
+#apt install build-essential python3.12-dev
 
-#update ubuntu registries
-#sudo apt update
+#install libpcre3, libpcre3-dev to enable uwsgi work
+#apt install libpcre3 libpcre3-dev
 
-#install and setup python environment
+#update ubuntu libraries
+#apt update
+
+#create and activate a virtual python environment
 python3 -m venv .venv/djangodev/
-
-echo 'environment created'
-
 source .venv/djangodev/bin/activate
 
 #start nginx
 #sudo systemctl start nginx
 
+#configure nginx proxy for uwsgi
+#...
+
+
 #install python requirements for django app
 pip install -r backend/backend_requirements.txt
 
 #start uwsgi application through ini file
-
-pip install uwsgi -I --no-cache-dir
-
 uwsgi backend/djangoapp.ini
