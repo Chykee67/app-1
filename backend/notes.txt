@@ -20,3 +20,7 @@ http {
         }
     }
 }
+
+
+jenkins-practice-pat:
+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
