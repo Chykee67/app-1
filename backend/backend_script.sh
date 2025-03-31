@@ -9,7 +9,7 @@ python3 -m venv .venv/djangodev/
 
 echo 'environment created'
 
-source $PWD/.venv/djangodev/bin/activate
+source .venv/djangodev/bin/activate
 
 #start nginx
 #sudo systemctl start nginx
@@ -18,4 +18,10 @@ source $PWD/.venv/djangodev/bin/activate
 pip install backend/backend_requirements.txt
 
 #start uwsgi application through ini file
+pip uninstall uwsgi
+
+sudo apt install libpcre3 libpcre3-dev
+
+pip install uwsgi -I --no-cache-dir
+
 uwsgi backend/djangoapp.ini
