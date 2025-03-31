@@ -17,6 +17,7 @@ pipeline {
         stage("Deploy"){
             steps{
                 echo "Deploying ..."
+                sh 'python3 -m django --version'
             }
         }
     }
