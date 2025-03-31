@@ -9,7 +9,7 @@ python3 -m venv .venv/djangodev/
 
 echo 'environment created'
 
-source .venv/djangodev/bin/activate
+source $PWD/.venv/djangodev/bin/activate
 
 #start nginx
 #sudo systemctl start nginx
