@@ -24,3 +24,16 @@ http {
 
 jenkins-practice-pat:
 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
+
+
+ngrok usage:
+1. put app online: ngrok http http://localhost:priority
+    The ensuing UI shows the forwarding address which is tunneled to your app
+
+2. use a static url: ngrok http port --url https://staticurl (ngrok http --url=likely-dominant-tetra.ngrok-free.app 80)
+
+3. Other points to explore ngrok with docker, ngrok with nginx
+
+
+SEE ALL PORTS IN USE:
+    sudo lsof -nP -iTCP -sTCP:LISTEN
