@@ -1,0 +1,11 @@
+{"lvl":"info","msg":"no configuration paths supplied","t":"2025-04-03T07:28:20.13213471+01:00"}
+{"lvl":"info","msg":"using configuration at default config path","path":"/home/chikeluba/.config/ngrok/ngrok.yml","t":"2025-04-03T07:28:20.133442737+01:00"}
+{"err":"\u003cnil\u003e","lvl":"info","msg":"open config file","path":"/home/chikeluba/.config/ngrok/ngrok.yml","t":"2025-04-03T07:28:20.133510802+01:00"}
+{"addr":"127.0.0.1:4040","allow_hosts":null,"lvl":"info","msg":"starting web service","obj":"web","t":"2025-04-03T07:28:20.166663021+01:00"}
+{"lvl":"info","msg":"client session established","obj":"tunnels.session","t":"2025-04-03T07:28:23.207548992+01:00"}
+{"lvl":"info","msg":"tunnel session started","obj":"tunnels.session","t":"2025-04-03T07:28:23.207719744+01:00"}
+{"addr":"http://localhost:80","lvl":"info","msg":"started tunnel","name":"command_line","obj":"tunnels","t":"2025-04-03T07:28:23.524781517+01:00","url":"https://c0ce-102-88-109-145.ngrok-free.app"}
+{"lvl":"info","msg":"received stop request","obj":"app","stopReq":{},"t":"2025-04-03T07:29:29.234757047+01:00"}
+{"err":"\u003cnil\u003e","lvl":"info","msg":"session closing","obj":"tunnels.session","t":"2025-04-03T07:29:29.236797194+01:00"}
+{"err":"reconnecting session closed","id":"ff7f1cae9283","lvl":"info","msg":"accept failed","obj":"csess","t":"2025-04-03T07:29:29.237968932+01:00"}
+{"clientid":"34496748c39fd865634c80dd5fc20144","lvl":"info","msg":"failed to accept connection: Listener closed","obj":"tunnels.session","t":"2025-04-03T07:29:29.238378816+01:00"}
