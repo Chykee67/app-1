@@ -7,21 +7,23 @@ pipeline {
 
     stages {
 
-        stage("Deploy"){
-            options {
-                timeout(time: 5, unit: 'MINUTES')
-            }
-            steps{
-                echo "Deploying ..."
-                sh "./backend/backend_script.sh"
+        stage("Ngrok & backend"){
+            parallel{
+                stage("Ngrok"){
+                    steps{
+                        echo "starting Ngrok ..."
+                        sh "ngrok http 80"
+                    }
+                }
+
+                stage("Backend"){
+                    steps{
+                        echo "starting backend ..."
+                        sh "./backend/backend_script.sh"
+                    }
+                }
             }
         }
 
-        stage("Start Ngrok"){
-            steps{
-                echo "starting ngrok ..."
-                sh "ngrok http 80"
-            }
-        }
     }
 }
