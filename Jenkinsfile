@@ -25,19 +25,15 @@ pipeline {
                     stages{
                         stage("backend_setup"){
                             options{
-                                timeout(time: 2, unit: "MINUTES")
+                                timeout(time: 3, unit: "MINUTES")
                             }
                             steps{
                                 echo "starting backend deployment ..."
-                                sh "./backend/backend_setup.sh"
+                                echo "going to sleep for 30 seconds ..."
+                                sh "sleep 30"
+                                echo "now up from sleep ..."
+                                sh "./backend/backend_script.sh"
                             }                       
-                        }
-
-                        stage("getNgrokUrl"){
-                            steps{
-                                echo "getting Ngrok Url ..."
-                                echo "\$(awk -F',' '/url/' ngrok.log | jq -r '.url')"
-                            }
                         }
                     }
                 }
