@@ -24,8 +24,7 @@ pipeline {
                         stage("getNgrokUrl"){
                             steps{
                                 echo "getting Ngrok Url ..."
-                                sh "url=\$(awk -F',' '/url/' ngrok.log | jq -r '.url')"
-                                echo "Ngrok URL: $url"
+                                echo "\$(awk -F',' '/url/' ngrok.log | jq -r '.url')"
                             }
                         }
                     }
