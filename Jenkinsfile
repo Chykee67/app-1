@@ -6,32 +6,34 @@ pipeline {
     //}
 
     stages{
-        parallel{
-            stage("Ngrok setup"){
-                steps{
-                    echo "starting up Ngrok ..."
-                    sh "./ngrok_script.sh"
-                }
-            }
-
-            stage("getUrlAndBuildBackend"){
-                stages{
-                    stage("getNgrokUrl"){
+        stage("Ngrok and Backend"){
+                parallel{
+                    stage("Ngrok setup"){
                         steps{
-                            sh "going to sleep for 20 seconds to allow ngrok setup"
-                            sh "sleep 20"
-                            echo "\$(grep 'url' ngrok.log | jq -r '.url)"
+                            echo "starting up Ngrok ..."
+                            sh "./ngrok_script.sh"
                         }
                     }
 
-                    stage("Build Backend"){
-                        steps{
-                            echo "Building backend from script"
-                            sh "./backend/backend_script.sh"
+                    stage("getUrlAndBuildBackend"){
+                        stages{
+                            stage("getNgrokUrl"){
+                                steps{
+                                    sh "going to sleep for 20 seconds to allow ngrok setup"
+                                    sh "sleep 20"
+                                    echo "\$(grep 'url' ngrok.log | jq -r '.url)"
+                                }
+                            }
+
+                            stage("Build Backend"){
+                                steps{
+                                    echo "Building backend from script"
+                                    sh "./backend/backend_script.sh"
+                                }
+                            }
                         }
                     }
                 }
-            }
         }
     }
 }
