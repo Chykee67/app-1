@@ -12,13 +12,25 @@ pipeline {
                 stage("Ngrok"){
                     stages{
                         stage("ngrok setup"){
-                            options{
-                                timeout(time: 2, unit: "MINUTES")
-                            }
                             steps{
                                 echo "starting Ngrok ..."
                                 sh "./ngrok_script.sh"
                             }
+                        }
+
+                    }
+                }
+
+                stage("Backend"){
+                    stages{
+                        stage("backend_setup"){
+                            options{
+                                timeout(time: 2, unit: "MINUTES")
+                            }
+                            steps{
+                                echo "starting backend deployment ..."
+                                sh "./backend/backend_setup.sh"
+                            }                       
                         }
 
                         stage("getNgrokUrl"){
@@ -27,16 +39,6 @@ pipeline {
                                 echo "\$(awk -F',' '/url/' ngrok.log | jq -r '.url')"
                             }
                         }
-                    }
-                }
-
-                stage("Backend"){
-                    options{
-                        timeout(time: 2, unit: 'MINUTES')
-                    }
-                    steps{
-                        echo "starting backend ..."
-                        sh "./backend/backend_script.sh"
                     }
                 }
             }
