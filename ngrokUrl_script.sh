@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "sleeping for 5 seconds to allow ngrok set up"
+echo "sleeping for 10 seconds to allow ngrok set up"
 
 sleep 10
 
