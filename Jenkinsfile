@@ -19,11 +19,8 @@ pipeline {
                         stages{
                             stage("getNgrokUrl"){
                                 steps{
-                                    echo "going to sleep for 5 seconds to allow ngrok setup"
-                                    sh "sleep 5"
-                                    echo "getting ngrok url ..."
-                                    sh "cat ngrok.log | grep 'url' | jq -r '.url'"
-                                    //sh "grep 'url' ngrok.log | jq -r '.url"
+                                    echo "getting Ngrok URL ..."
+                                    sh "./ngrokUrl_script.sh"
                                 }
                             }
 
