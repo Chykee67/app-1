@@ -133,3 +133,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'auth.User' #this is the default user model
 
 LOGIN_URL = 'user_auth:signin'
+
+CSRF_TRUSTED_ORIGINS = ['https://*.ngrok-free.app']
