@@ -1,14 +1,21 @@
+#!/bin/bash
+
+apt update
+#apt upgrade -y
+
 #install build-essential and python-dev
-#apt install build-essential python3.12-dev
+apt install build-essential python3.12-dev -y
 
 #install libpcre3, libpcre3-dev to enable uwsgi work
-#apt install libpcre3 libpcre3-dev
+apt install libpcre3 libpcre3-dev python3 python3.12-venv -y
 
 #update ubuntu libraries
 #apt update
 
 #create and activate a virtual python environment
 python3 -m venv .venv/djangodev/
+
+#python -m venv .venv/djangodev/
 
 source .venv/djangodev/bin/activate
 

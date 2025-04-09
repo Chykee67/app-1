@@ -6,33 +6,9 @@ pipeline {
     //}
 
     stages{
-        stage("Ngrok and Backend"){
-                parallel{
-                    stage("Ngrok setup"){
-                        steps{
-                            echo "starting up Ngrok ..."
-                            sh "./ngrok_script.sh"
-                        }
-                    }
-
-                    stage("getUrlAndBuildBackend"){
-                        stages{
-                            stage("getNgrokUrl"){
-                                steps{
-                                    echo "getting Ngrok URL ..."
-                                    sh "./ngrokUrl_script.sh"
-                                }
-                            }
-
-                            stage("Build Backend"){
-                                steps{
-                                    echo "Building backend from script"
-                                    sh "./backend/backend_script.sh"
-                                }
-                            }
-                        }
-                    }
-                }
+        stage('build backend'){
+            steps
         }
     }
-}
+
+    }

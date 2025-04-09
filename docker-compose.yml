@@ -1,0 +1,21 @@
+services:
+  proxy:
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - my-network
+  
+  web-app:
+    image: ubuntu:latest
+    volumes:
+      - ./backend:/backend:ro
+    entrypoint: ["backend/backend_script.sh"]
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge

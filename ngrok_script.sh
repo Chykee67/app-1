@@ -1,5 +1,5 @@
 #!/bin/bash
 
-ngrok config add-authtoken 2vAXTkqkYyVedn0obKZFFvVueBP_Msu3t3D6yY4yeS9C7u7c
+#ngrok config add-authtoken 2vAXTkqkYyVedn0obKZFFvVueBP_Msu3t3D6yY4yeS9C7u7c
 
-ngrok http 80 --log-format=json --log stdout > ngrok.log
+ngrok http 81 --log-format=json --log stdout > ngrok.log

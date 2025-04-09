@@ -77,14 +77,21 @@ WSGI_APPLICATION = 'mybasicapp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+#DATABASES = {
+ #   'default': {
+  #      'ENGINE': 'django.db.backends.postgresql',
+   #     'NAME': 'djangodb',
+    #    'USER': 'chikeluba',
+     #   'PASSWORD': 'testpassword',
+      #  'HOST': '192.168.25.128',
+       # 'PORT': '5432'
+    #}
+#}
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'djangodb',
-        'USER': 'chikeluba',
-        'PASSWORD': 'testpassword',
-        'HOST': 'localhost',
-        'PORT': '5432'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -134,4 +141,4 @@ AUTH_USER_MODEL = 'auth.User' #this is the default user model
 
 LOGIN_URL = 'user_auth:signin'
 
-CSRF_TRUSTED_ORIGINS = ['https://*.ngrok-free.app']
+CSRF_TRUSTED_ORIGINS = []
