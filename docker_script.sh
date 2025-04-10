@@ -4,4 +4,4 @@ docker compose down
 
 docker rmi -f $(docker images -q)
 
-docker compose up --build
+docker compose up -d --build
