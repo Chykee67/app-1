@@ -6,19 +6,18 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
     networks:
-      #- my-network
-      - webapp-network
+      - my-network
+    depends_on:
+      - web-app
   
-  #web-app:
-   # image: ubuntu:latest
-    #volumes:
-     # - ./backend:/backend:ro
-    #entrypoint: ["backend/backend_script.sh"]
-    #networks:
-    #  - my-network
+  web-app:
+    image: ubuntu:latest
+    volumes:
+      - ./backend:/backend:ro
+    entrypoint: ["backend/backend_script.sh"]
+    networks:
+      - my-network
 
 networks:
-  webapp-network:
-    external: true
- # my-network:
-  #  driver: bridge
+  my-network:
+    driver: bridge

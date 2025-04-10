@@ -27,10 +27,10 @@ source .venv/djangodev/bin/activate
 
 
 #install python requirements for django app
-pip install -r /app/backend_requirements.txt #backend/backend_requirements.txt
+pip install -r backend/backend_requirements.txt
 
 #start ngrok on port 80
 #ngrok http 80
 
 #start uwsgi application through ini file
-uwsgi /app/djangoapp.ini #backend/djangoapp.ini
+uwsgi backend/djangoapp.ini
