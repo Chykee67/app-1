@@ -8,7 +8,7 @@ pipeline {
     stages{
         stage('build backend'){
             steps{
-                echo '\$(docker ps)'
+                sh '\$(docker ps)'
             }
         }
     }
