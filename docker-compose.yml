@@ -29,7 +29,7 @@ services:
       - '/etc/ngrok.yml'
     volumes:
       - ./ngrok.yml:/etc/ngrok.yml:ro
-      - ./ngrok.log:/var/log/ngrok.log:rw
+      - ./ngrok.log:/ngrok.log:rw
     ports:
       - 4040:4040
 

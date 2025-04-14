@@ -5,7 +5,7 @@ agent:
   #connect_url: likely-dominant-tetra.ngrok-free.app
   log_level: info
   log_format: json
-  log: /var/log/ngrok.log
+  log: ngrok.log
 
 
 tunnels:
