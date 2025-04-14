@@ -9,6 +9,7 @@ services:
       - my-network
     depends_on:
       - web-app
+    
   
   web-app:
     image: ubuntu:latest
