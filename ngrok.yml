@@ -2,10 +2,10 @@ version: 3
 
 agent:
   authtoken: 2vAXTkqkYyVedn0obKZFFvVueBP_Msu3t3D6yY4yeS9C7u7c
-  #connect_url: likely-dominant-tetra.ngrok-free.app
-  log_level: info
-  log_format: json
-  log: ngrok.log
+  #connect_url: likely-dominant-tetra.ngrok-free.app:80
+  #log_level: info
+  #log_format: json
+  #log: stdout
 
 
 tunnels:
