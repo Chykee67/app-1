@@ -1,5 +1,5 @@
 pipeline {
-    agent {label 'jenkin-gce-jobs'}
+    agent {label 'jenkins-gce-jobs'}
 
     //triggers {
       //pollSCM('H/15 * * * *')
