@@ -1,5 +1,5 @@
 pipeline {
-    agent {label 'gce-djangoappserver'}
+    agent {label 'jenkin-gce-jobs'}
 
     //triggers {
       //pollSCM('H/15 * * * *')
