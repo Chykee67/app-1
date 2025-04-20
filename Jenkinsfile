@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent {gce-djangoappserver}
 
     //triggers {
       //pollSCM('H/15 * * * *')
