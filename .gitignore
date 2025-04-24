@@ -1,3 +1,4 @@
 *.sqlite3
 backend/.venv
 *.pyc
+gitit.sh
