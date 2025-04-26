@@ -1,13 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Confirm Delete Task</title>
-</head>
-<body>
-    <h1>Confirm Delete Task</h1>
-    <p>Are you sure you want to delete "{{task.title|title}}"?</p>
+{% extends 'base_todo_template.html' %}
 
+{% block TITLE %}Confirm Delete Task{% endblock TITLE %}
+
+{% block WELCOME %}
+    <p>Hi {{request.user}},</p>
+    <p>
+        Are you sure you want to delete "{{task.title|title}}"?
+    </p>
+{% endblock WELCOME %}
+
+<body>
+    {% block SECTION_CONTENT %}
+    <h1>Select to confirm choice</h1>
     <a href="{% url 'todo:delete_task' task.id %}">Yes</a>
     <a href="{% url 'todo:task_detail' task.id %}">No</a>
+    {% endblock SECTION_CONTENT %}
 </body>
-</html>

@@ -1,9 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Add task</title>
-</head>
+{% extends 'base_todo_template.html' %}
+
+{% block TITLE %}Add task{% endblock TITLE %}
+
+{% block WELCOME %}
+    <p>
+        Please fill the form below to add a new To-Do task
+    </p>
+{% endblock WELCOME %}
+
 <body>
+    {% block SECTION_CONTENT %}
     <h1>Add task</h1>
     {% if error_message %}
         <p><strong>{{error_message}}</strong></p>
@@ -13,5 +19,5 @@
         {{form.as_p}}
         <input type="submit" value="Add task">
     </form>
+    {% endblock SECTION_CONTENT %}
 </body>
-</html>

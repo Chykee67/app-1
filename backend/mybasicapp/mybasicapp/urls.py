@@ -19,9 +19,11 @@ from django.urls import path, include
 
 from .views import HomepageView
 
+app_name = 'mybasicapp'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', HomepageView.as_view(), name='home'),
+    path('', HomepageView.as_view(), name='Home'),
     path('user_auth/', include('user_auth.urls')),
     path('todo/', include('todo.urls')),
 ]

@@ -1,23 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Task list</title>
-</head>
+{% extends 'base_todo_template.html' %}
+
+{% block TITLE %}All Tasks{% endblock TITLE %}
+
+{% block WELCOME %}
+    <p>
+        Hi {{request.user}},
+    </p>
+    <p>
+        All your To-Do tasks are listed below, including completed tasks.
+    </p>
+{% endblock WELCOME %}
 
 <body>
-    <h1>Task list</h1>
+    {% block SECTION_CONTENT %}
+    <h1>To-Do</h1>
     <ol>
         {% for task in tasks %}
             <li><a href="{% url 'todo:task_detail' task.id %}">{{ task }}</a></li>
         {% endfor %}
     </ol>
-
-    <p>
-        <button type="button" onclick="window.location.href = '/todo/add_task/';">Add Task</button>
-    </p>
-    
-    <p>
-        <button type="button" onclick="window.location.href = '/user_auth/signout/';">Signout</button>
-    </p>
+    {% endblock SECTION_CONTENT %}
 </body>
-</html>

@@ -1,23 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{task.title|title}}</title>
-</head>
+{% extends 'base_todo_template.html' %}
+
+{% block TITLE %}{{task.title|title}}{% endblock TITLE %}
+
+{% block WELCOME %}
+{% endblock WELCOME %}
+
 <body>
+    {% block SECTION_CONTENT %}
+
     <h1>{{task.title|title}}</h1>
     <p>{{task.description}}</p>
     <p>Priority: {{task.priority}}</p>
     <p>Created: {{task.created}}</p>
     <p>Due: {{task.due}}</p>
     <p>Status: {{task.status}}</p>
-    <a href="{% url 'todo:view_all_tasks' %}">Back to Task List</a>
+
     <a href="{% url 'todo:edit_task' task.id %}">Edit Task</a>
+
     <a href="{% url 'todo:initiate_delete_task' task.id %}">Delete Task</a>
+
     {% if task.status == 'Pending' %}
     <a href="{% url 'todo:mark_task_complete' task.id %}">Mark as completed</a>
     {% else %}
     <a href="{% url 'todo:mark_task_pending' task.id %}">Mark as pending</a>
     {% endif %}
-    <p><a href="{% url 'user_auth:signout' %}">Signout</a></p>
+
+    {% endblock SECTION_CONTENT %}
 </body>
-</html>
