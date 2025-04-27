@@ -1,17 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Sign In</title>
-</head>
-<body>
-    <h1>Sign In</h1>
-    {% if error_message %}
-        <p><strong>{{ error_message }}</strong></p>
-    {% endif %}
-    <form action="{% url 'user_auth:signin' %}" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Sign In</button>
-    </form>
-    <a href="{% url 'user_auth:signup' %}">Sign Up</a>
-</html>
+{% extends 'base_template.html' %}
+
+{% block TITLE %}Sign In{% endblock TITLE %}
+
+{% block WELCOME %}{% endblock WELCOME %}
+
+{% block BASE_SECTION_CONTENT %}
+<h1>Sign In</h1>
+
+{% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+<form action="{% url 'user_auth:signin' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Sign In</button>
+</form>
+
+<p>Don't have an account? <a href="{% url 'user_auth:signup' %}">Sign Up</a></p>
+{% endblock BASE_SECTION_CONTENT %}
+
+{% block USER_AUTH %}{% endblock USER_AUTH %}
