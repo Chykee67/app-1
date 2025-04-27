@@ -1,11 +1,19 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <head>
         <title>{% block TITLE %}{% endblock TITLE %}</title>
+        <link rel="stylesheet", href="{% static 'main.css' %}">
     </head>
 
     <body>
+        <div class="site-logo">
+            <img src="{% static 'site-logo.jpg' %}"
+                    alt="Site Logo"/>
+        </div>
+        
         <div class="topnav">
             {% block NAV_BAR %}
             <a class="active" href="{% url 'Home' %}">Home</a>

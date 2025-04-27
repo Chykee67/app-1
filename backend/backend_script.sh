@@ -33,5 +33,6 @@ pip install -r backend/backend_requirements.txt
 #ngrok http 80
 
 python backend/mybasicapp/manage.py migrate
+
 #start uwsgi application through ini file
 uwsgi backend/djangoapp.ini
