@@ -2,6 +2,8 @@ services:
   proxy:
     image: nginx:latest
     restart: unless-stopped
+    depends_on:
+      - backend_server
     ports:
       - "80:80"
     volumes:

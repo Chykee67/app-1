@@ -16,18 +16,23 @@
         
         <div class="topnav">
             {% block NAV_BAR %}
+            <p>
             <a class="active" href="{% url 'Home' %}">Home</a>
             <a href="{% url 'todo:view_all_tasks' %}">All Tasks</a>
             <a href="{% url 'todo:view_pending_tasks' %}">Pending Tasks</a>
             <a href="{% url 'todo:view_completed_tasks' %}">Completed Tasks</a>
             <a href="{% url 'todo:add_task' %}">Add Task</a>
+            </p>
+            {% if request.user.is_authenticated %}
+            <p><a href="{% url 'user_account:user_account' %}">My Account</a></p>
+            {% endif %}
             {% endblock NAV_BAR %}
         </div>
 
         <div id="welcome">
             {% block WELCOME %}
             {% if request.user.is_authenticated %}
-                <p>Welcome {{request.user}}!</p>
+                <p>Welcome {{request.user|title}}!</p>
             {% else %}
                 <p>Welcome to the To-Do App!</p>
             {% endif %}

@@ -1,0 +1,29 @@
+{% extends 'base_user_account_template.html' %}
+{% load static %}
+
+{% block TITLE %}My Account{% endblock TITLE %}
+
+{% block SECTION_CONTENT %}
+<div class="user-photo">
+    {% if not request.user.photo %}
+        <a href=""><img src="{% static 'default_user_photo.jpeg' %}" alt="Default User Photo" /></a>
+    {% else %}
+        <a href="">
+            <img src="{{ request.user.photo.url }}" alt="User Photo" />
+        </a>
+    {% endif %}
+</div>
+
+<p><a href="">Edit Profile</a></p>
+<p><a href="">Change Password</a></p>
+
+<div class="account-stats">
+    <h2>Account Statistics</h2>
+    <p>Total Tasks: {{ all_tasks.count }}</p>
+    <p>Pending Tasks: {{ pending_tasks.count }}</p>
+    <p>Completed Tasks: {{ completed_tasks.count }}</p>
+</div>
+
+<a href="">Delete Account</a>
+
+{% endblock SECTION_CONTENT %}
