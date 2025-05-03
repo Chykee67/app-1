@@ -2,3 +2,5 @@
 backend/.venv
 *.pyc
 gitit.sh
+mediafiles
+staticfiles

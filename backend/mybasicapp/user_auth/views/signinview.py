@@ -3,7 +3,6 @@ from django.views import View
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_not_required
 from django.contrib.auth import authenticate, login
-from django.http import HttpResponse
 
 from user_auth.forms import SigninForm
 

@@ -1,8 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.core.files.storage import FileSystemStorage
 
-fs = FileSystemStorage(location="/media/photos")
 
-class AppUser(User):
-    photo = models.ImageField(storage=fs)
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    photo = models.ImageField(upload_to='photos/', null=True, blank=True)
+    bio = models.TextField(null=True, blank=True)

@@ -4,12 +4,16 @@
 {% block TITLE %}My Account{% endblock TITLE %}
 
 {% block SECTION_CONTENT %}
+{% if message %}{{message}}{% endif %}
 <div class="user-photo">
-    {% if not request.user.photo %}
-        <a href=""><img src="{% static 'default_user_photo.jpeg' %}" alt="Default User Photo" /></a>
+    {% if not request.user.profile.photo %}
+        <a href="{% url 'user_account:upload_photo' %}"><img src="{% static 'default_user_photo.jpeg' %}" alt="Default User Photo" /></a>
     {% else %}
-        <a href="">
-            <img src="{{ request.user.photo.url }}" alt="User Photo" />
+        <a href="{% url 'user_account:upload_photo' %}">
+
+            <img src="{{ request.user.profile.photo.url }}" 
+                style="width: 200px; height: 200px; border-radius: 50%;"
+                alt="User Photo" />
         </a>
     {% endif %}
 </div>
@@ -18,7 +22,7 @@
 <p><a href="">Change Password</a></p>
 
 <div class="account-stats">
-    <h2>Account Statistics</h2>
+    <h4>Account Statistics</h4>
     <p>Total Tasks: {{ all_tasks.count }}</p>
     <p>Pending Tasks: {{ pending_tasks.count }}</p>
     <p>Completed Tasks: {{ completed_tasks.count }}</p>

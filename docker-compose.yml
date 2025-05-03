@@ -9,6 +9,7 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
       - ./staticfiles:/staticfiles:rw
+      - ./mediafiles:/mediafiles:rw
     networks:
       - app_network
 
@@ -16,6 +17,9 @@ services:
     image: ubuntu:latest
     volumes:
       - ./backend/:/backend/
+      - type: bind
+        source: ./mediafiles
+        target: /mediafiles
     entrypoint: ["./backend/backend_script.sh"]
     networks:
       - app_network

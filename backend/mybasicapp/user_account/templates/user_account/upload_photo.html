@@ -1,0 +1,25 @@
+{% extends 'base_user_account_template.html' %}
+{% load static %}
+
+{% block TITLE %}Profile Photo Upload{% endblock TITLE %}
+
+{% block WELCOME %}
+    <h1>Upload Your Profile Photo</h1>
+{% endblock WELCOME %}
+
+{% block SECTION_CONTENT %}
+    <div class="user-photo">
+        {% if not request.user.profile.photo %}
+            <img src="{% static 'default_user_photo.jpeg' %}" alt="Default User Photo" />
+        {% else %}
+            <img src="{{ request.user.profile.photo.url }}" alt="User Photo" />
+        {% endif %}
+    </div>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+
+{% endblock SECTION_CONTENT %}

@@ -1,0 +1,9 @@
+WORKING WITH IMAGES USING THE PYTHON IMAGE LIBRARY(PIL):
+
+- USE Image.open() to load Image
+- use Image.save() to save image
+
+important python modules to study:
+- os
+- sys
+- pathlib

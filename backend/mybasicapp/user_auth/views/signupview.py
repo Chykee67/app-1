@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from django.core.exceptions import ValidationError
 
 from user_auth.forms.signupform import SignupForm
+from user_account.models import Profile
 
 @method_decorator(login_not_required, name="dispatch")
 class SignupView(View):
@@ -29,6 +30,8 @@ class SignupView(View):
                 })
             else:
                 if user:
+                    profile = Profile(user=user)
+                    profile.save()
                     return redirect('user_auth:signin')
                 else:
                     return render(request, 'user_auth/signup.html', {
