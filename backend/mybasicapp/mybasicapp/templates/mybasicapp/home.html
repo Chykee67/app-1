@@ -1,2 +1,29 @@
 {% extends 'base_template.html' %}
 {% block TITLE %}To-Do Home{% endblock TITLE %}
+
+{% block BASE_SECTION_CONTENT %}
+    {% if request.user.is_authenticated %}
+        {% if recent_tasks %}
+            <h4>
+                Your most recent tasks in the past week:
+            </h4>
+            <ol>
+                {% for task in recent_tasks %}
+                    <li>
+                        <a href="{% url 'todo:task_detail' task.id %}">{{ task }}</a>
+                    </li>
+                {% endfor %}
+            </ol>
+        
+        {% else %}
+            <h4>
+                You have no recent tasks in the past week.
+            </h4>
+        {% endif %}
+    {% else %}
+        <h4>
+            You are not logged in. Please log in to see your tasks.
+        </h4>
+    {% endif %}
+        
+{% endblock BASE_SECTION_CONTENT %}

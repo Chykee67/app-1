@@ -36,5 +36,7 @@ python backend/mybasicapp/manage.py makemigrations todo user_account user_auth
 
 python backend/mybasicapp/manage.py migrate
 
+python backend/mybasicapp/manage.py collectstatic --noinput
+
 #start uwsgi application through ini file
 uwsgi backend/djangoapp.ini

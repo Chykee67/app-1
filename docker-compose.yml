@@ -20,6 +20,9 @@ services:
       - type: bind
         source: ./mediafiles
         target: /mediafiles
+      - type: bind
+        source: ./staticfiles
+        target: /staticfiles
     entrypoint: ["./backend/backend_script.sh"]
     networks:
       - app_network
