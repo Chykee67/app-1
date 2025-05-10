@@ -27,16 +27,16 @@ source .venv/djangodev/bin/activate
 
 
 #install python requirements for django app
-pip install -r backend/backend_requirements.txt
+pip install -r /backend/backend_requirements.txt
 
 #start ngrok on port 80
 #ngrok http 80
 
-python backend/mybasicapp/manage.py makemigrations todo user_account user_auth
+python /backend/mybasicapp/manage.py makemigrations todo user_account user_auth
 
-python backend/mybasicapp/manage.py migrate
+python /backend/mybasicapp/manage.py migrate
 
-python backend/mybasicapp/manage.py collectstatic --noinput
+python /backend/mybasicapp/manage.py collectstatic --noinput
 
 #start uwsgi application through ini file
-uwsgi backend/djangoapp.ini
+uwsgi /backend/djangoapp.ini

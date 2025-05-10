@@ -1,29 +1,27 @@
 services:
   proxy:
-    image: nginx:latest
+    image: chykee67/proxy:v1
     restart: unless-stopped
     depends_on:
       - backend_server
     ports:
       - "80:80"
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
       - ./staticfiles:/staticfiles:rw
       - ./mediafiles:/mediafiles:rw
     networks:
       - app_network
 
   backend_server:
-    image: ubuntu:latest
+    image: chykee67/backend_server:v1
+    restart: unless-stopped
     volumes:
-      - ./backend/:/backend/
       - type: bind
         source: ./mediafiles
         target: /mediafiles
       - type: bind
         source: ./staticfiles
         target: /staticfiles
-    entrypoint: ["./backend/backend_script.sh"]
     networks:
       - app_network
 
