@@ -23,7 +23,6 @@ source .venv/djangodev/bin/activate
 #sudo systemctl start nginx
 
 #configure nginx proxy for uwsgi
-#...
 
 
 #install python requirements for django app
