@@ -29,6 +29,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
         with:
+          context: .
+          file: nginx.Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/proxy:latest
           labels: ${{ steps.meta.outputs.labels }}
