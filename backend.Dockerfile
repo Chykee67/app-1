@@ -12,6 +12,4 @@ WORKDIR /backend
 
 VOLUME /mediafiles /staticfiles
 
-#EXPOSE 3031
-
 ENTRYPOINT ["./backend_script.sh"]
