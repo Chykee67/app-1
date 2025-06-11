@@ -10,6 +10,6 @@ COPY ./backend/djangoapp.ini /backend/
 
 WORKDIR /backend
 
-VOLUME /mediafiles /staticfiles
+VOLUME /myapp-media
 
 ENTRYPOINT ["./backend_script.sh"]
