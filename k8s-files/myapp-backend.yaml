@@ -67,7 +67,7 @@ spec:
           image: chykee67/backend_server:latest
           volumeMounts:
             - name: myapp-volume
-              mountPath: /media/
+              mountPath: /myapp-media/
       volumes:
         - name: myapp-volume
           persistentVolumeClaim:
