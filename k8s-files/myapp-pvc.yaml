@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: myapp-pvc
+  namespace: practice-ns
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeName: myapp-pv
+  storageClassName: ""
+  volumeMode: Filesystem
+  resources:
+    limits:
+      storage: 5M
+    requests:
+      storage: 5M
