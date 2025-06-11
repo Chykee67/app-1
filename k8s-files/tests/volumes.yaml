@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: hostpath-volume
+  namespace: practice-ns
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 5M
+  claimRef:
+    name: hostpath-pvc
+    namespace: practice-ns
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/hostname
+            operator: In
+            values: ['minikube']
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
+  hostPath:
+    path: /djangoapp/
+    type: DirectoryOrCreate
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-volume
+  namespace: practice-ns
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 5M
+  claimRef:
+    name: local-pvc
+    namespace: practice-ns
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/hostname
+            operator: In
+            values: ['minikube']
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
+  local:
+    path: /

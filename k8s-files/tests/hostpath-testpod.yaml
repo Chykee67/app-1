@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: testpod
+  namespace: practice-ns
+spec:
+  containers:
+    - name: testit
+      image: nginx:latest
+      volumeMounts:
+        - mountPath: "/djangoapp/"
+          name: hostpath-media
+
+  volumes:
+    - name: hostpath-media
+      persistentVolumeClaim:
+        claimName: hostpath-pvc
