@@ -21,7 +21,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   volumeMode: Filesystem
   hostPath:
-    path: /djangoapp/
+    path: /media/
     type: DirectoryOrCreate
 
 ---
