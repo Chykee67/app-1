@@ -4,10 +4,10 @@ apt update
 #apt upgrade -y
 
 #install build-essential and python-dev
-apt install build-essential python3.12-dev -y
+apt install build-essential python3.13-dev -y
 
 #install libpcre3, libpcre3-dev to enable uwsgi work
-apt install libpcre3 libpcre3-dev python3 python3.12-venv -y
+apt install libpcre3 libpcre3-dev python3 python3.13-venv -y
 
 #update ubuntu libraries
 #apt update
