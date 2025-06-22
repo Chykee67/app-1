@@ -34,7 +34,7 @@ class Task(models.Model):
     
     created = models.DateTimeField(auto_now_add=True)
     
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE) #can i use 'auth.User' instead of User?
+    #created_by = models.ForeignKey(User, on_delete=models.CASCADE) #can i use 'auth.User' instead of User?
     # created_by = models.ForeignKey('auth.User', on_delete=models.CASCADE) #can i use 'auth.User' instead of User?
 
     class Meta:
