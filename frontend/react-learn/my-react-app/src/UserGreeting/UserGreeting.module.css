@@ -1,0 +1,10 @@
+.welcomeMessage {
+    color: hsl(23, 62%, 64%);
+}
+
+.loginPrompt {
+    color: hsl(0, 25%, 64%);
+}
+.username {
+    font-weight: bold;
+}

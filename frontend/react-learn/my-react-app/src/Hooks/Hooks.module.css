@@ -1,0 +1,19 @@
+.hooks{
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.hooks p{
+    font-size: 10em;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.hooks button{
+    font-size: 2em;
+    margin: 5px;
+    border: 0;
+    border-radius: 5px;
+    background-color: hsl(188, 84%, 50%);
+    color: white;
+}

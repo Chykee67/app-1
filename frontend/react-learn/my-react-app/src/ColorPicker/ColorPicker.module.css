@@ -1,0 +1,22 @@
+.colorPicker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 20px;
+
+}
+
+.colorPicker input {
+    display: flex;
+    width: 200px;
+    height: 200px;
+    border: 0;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.colorPicker input:active {
+    transform: scale(0.9);
+}
