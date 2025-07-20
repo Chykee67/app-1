@@ -1,10 +1,11 @@
-import Clock from './Clock/Clock.jsx';
+import StopWatch from './StopWatch/StopWatch.jsx';
+import Reffing from './Reffing/Reffing.jsx';
 
 function App() {
-
   return(
     <>
-      <Clock />
+      <Reffing />
+      <StopWatch />
     </>
   );
 }
