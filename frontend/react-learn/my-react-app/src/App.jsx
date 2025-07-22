@@ -4,7 +4,6 @@ import Reffing from './Reffing/Reffing.jsx';
 function App() {
   return(
     <>
-      <Reffing />
       <StopWatch />
     </>
   );
