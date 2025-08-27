@@ -11,9 +11,10 @@ import {
 
 import { TestContextProvider } from './TestContext'
 
-function makeClient(){
+export function makeClient(){
     const httpLink = new HttpLink({
-        uri: "http://127.0.0.1:8000/graphql/"
+        uri: "http://127.0.0.1:8000/graphql/",
+        credentials: "include"
     })
 
     return new ApolloClient({
@@ -26,9 +27,7 @@ export function ApolloWrapper({ children }: React.PropsWithChildren){
     return(
         <ApolloNextAppProvider makeClient={makeClient}>
             <AuthProvider>
-                <TestContextProvider>
-                    { children }
-                </TestContextProvider>
+                { children }
             </AuthProvider>
         </ApolloNextAppProvider>
     )

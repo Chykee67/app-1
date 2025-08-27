@@ -1,19 +1,16 @@
-"use client"
+'use client'
 
-import { useContext } from 'react'
-
-import { TestContext } from '../lib/TestContext'
+import { getUser } from '../lib/UserContext'
 
 function Test(){
 
-    const {test, hello, hollara} = useContext(TestContext)
 
-    console.log(hello(), test)
-    hollara(test)
+
+    const { user } = getUser();
 
     return (
         <div>
-            <p>tester is: {test}</p>
+            <p>tester is: {user}</p>
         </div>
     )
 }

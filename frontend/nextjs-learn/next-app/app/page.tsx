@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 const GET_TOKEN = gql`
   mutation tokenAuth($username: String!, $password: String!){
-    tokenAuth(username: $username, password: $password){
+    tokenAuth(input: {username: $username, password: $password}){
       token
       payload
     }
@@ -16,11 +16,21 @@ export default function Page() {
 
   const [login, {data, loading, error}] = useMutation(GET_TOKEN)
 
+  const [user, setUser] = useState(null)
+  const [authToken, setAuthToken] = useState(null)
+
   const [username, setUsername] = useState("Enter Username")
   const [password, setPassword] = useState("Enter Password")
 
   if (loading) return "Loading..."
-  if (error) return "Login error"
+  if (error){
+    console.log(error)
+    return `Loading error: ${error.message}`
+  }
+  if (user){
+    console.log(user, authToken)
+    console.log(data.tokenAuth.payload.exp)
+  }
 
   return (
         <div>
@@ -30,7 +40,8 @@ export default function Page() {
               login({
                 variables: { username, password },
                 onCompleted (data){
-                  console.log("username: ", data.tokenAuth.payload.username)
+                  setUser(data.tokenAuth.payload.username)
+                  setAuthToken(data.tokenAuth.token)
                 }
               })
             }}>

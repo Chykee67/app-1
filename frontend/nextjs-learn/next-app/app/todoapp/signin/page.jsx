@@ -1,24 +1,24 @@
 'use client'
 
-import { useState, useContext } from 'react'
-import { AuthContext } from '../../lib/AuthContext'
+import { useState } from 'react'
+import { useAuth } from '../../lib/AuthContext'
 
 function signin(){
 
-    const { user, SignIn, SignOut} = useContext(AuthContext)
+    const { signIn, errorMessage } = useAuth()
 
     const [username, setUsername] = useState(null)
     const [password, setPassword] = useState(null)
 
     function handleSubmit(e){
         e.preventDefault()
-        SignIn(username, password)
+        signIn(username, password)
     }
 
-    console.log(username, password)
 
     return (
         <div>
+            {errorMessage && <p className="text-red-500 font-bold p-2 m-4">{errorMessage}</p>}
             <h1 className="font-black font-serif p-2 m-4 text-2xl">Sign In</h1>
             <form onSubmit={handleSubmit}>
                 <input type="text" placeholder="Username"

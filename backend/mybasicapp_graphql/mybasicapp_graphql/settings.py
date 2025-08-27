@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'todo',
     'graphene_django',
     'corsheaders',
+    'graphql_jwt.refresh_token.apps.RefreshTokenConfig',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +139,14 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOW_CREDENTIALS = True
+
+from datetime import timedelta
+
+GRAPHQL_JWT = {
+    "JWT_VERIFY_EXPIRATION": True,
+    "JWT_LONG_RUNNING_REFRESH_TOKEN": True,
+    "JWT_EXPIRATION_DELTA": timedelta(minutes=2),
+    "JWT_REFRESH_EXPIRATION_DELTA": timedelta(days=7),
+}
