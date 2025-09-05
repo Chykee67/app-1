@@ -45,22 +45,22 @@ export function NAVIGATION_BAR({ User }) {
                 </li>
                 <li>
                     {User && User !== "Anonymous" ? (
-                        <ACCOUNT_AREA User={User}/>
+                        <ACCOUNT_AREA User={ User }/>
                     ) : (
                         <a href="/todoapp/signin" className="text-blue-500 hover:underline">Sign In</a>
                     )}
                 </li>
                 <li>
-                    <LOGIN_AREA User={User}/>
+                    {User && User === "Anonymous"?(
+                        <a href="" className="text-blue-500 hover:underline">Sign Up</a>
+                    ): (
+                        <></>
+                    )}
                 </li>
             </ul>
         </nav>
     );
 }
-
-const accountOptions = [
-    {label: 'Profile', href: '/todoapp/profile'},
-]
 
 export function ACCOUNT_AREA({ User }){
 
@@ -80,13 +80,13 @@ export function ACCOUNT_AREA({ User }){
         return null;
     }else{
         return (
-            <div>
-                <button onMouseOver={toggledown} onMouseLeave={toggleup}>Account</button>
+            <div onMouseOver={toggledown} onMouseLeave={toggleup}>
+                <button className="text-blue-500 hover:underline">Account</button>
                 {isOpen && (
                     <ul>
                         <li><a href="/todoapp/profile" className="text-blue-500 hover:underline">Profile</a></li>
                         <li>
-                            <LOGIN_AREA User={User}/>
+                            <span className="text-blue-500"><LOGIN_AREA User={User}/></span>
                         </li>
                     </ul>
                 )}

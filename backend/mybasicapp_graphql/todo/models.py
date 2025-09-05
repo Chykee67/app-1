@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from account.models import AppUser
 
 class Task(models.Model):
 
@@ -35,11 +35,14 @@ class Task(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     
     #created_by = models.ForeignKey(User, on_delete=models.CASCADE) #can i use 'auth.User' instead of User?
-    # created_by = models.ForeignKey('auth.User', on_delete=models.CASCADE) #can i use 'auth.User' instead of User?
+    created_by = models.ForeignKey(AppUser,
+                                   on_delete=models.CASCADE,
+                                   related_name='tasks'
+                                   )
 
     class Meta:
         ordering = ['due']
 
 
     def __str__(self):
-        return f"{self.title.title()} - {self.due.strftime("%d-%m-%Y %H:%M")} - {self.priority.title()} priority - {self.status.title()}"
+        return f"{self.title.title()}"
