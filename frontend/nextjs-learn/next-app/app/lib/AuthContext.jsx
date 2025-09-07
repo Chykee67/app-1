@@ -1,7 +1,6 @@
 "use client"
 
 import { createContext, useState, useContext, useRef } from 'react'
-import { useRouter } from 'next/navigation'
 import { makeClient } from './ApolloWrapper'
 
 import {    GET_REFRESH_TOKEN,
@@ -18,8 +17,6 @@ import { LOGIN } from './graphql_mutations'
 export const AuthContext = createContext(null)
 
 export const AuthProvider = ({ children }) => {
-
-    const router = useRouter()
 
     const [refreshed, setRefreshed] = useState(false)
 
@@ -41,7 +38,7 @@ export const AuthProvider = ({ children }) => {
                 })
 
                 if (loginData.tokenAuth.token){
-                    router.push('/todoapp/')
+                    window.location.href = '/todoapp/';
 
                 }else{}
 
@@ -107,14 +104,14 @@ export const AuthProvider = ({ children }) => {
                     if (refresh_token_data?.refreshToken?.token) {
                         setRefreshed(true)
                         revoked.current = true
-                        router.refresh()
+                        window.location.href = window.location.href;
                     }else{}
 
                 } catch(error) {
 
                     console.error("Invalid refresh token: ", error)
-                    //router.push('/todoapp/signin')
-                    router.refresh()
+                    //window.location.href = '/todoapp/signin';
+                    window.location.href = window.location.href;
 
                 }
 
@@ -137,13 +134,13 @@ export const AuthProvider = ({ children }) => {
                 }
             }else{
                 console.log("Refresh token already revoked")
-                router.push('/todoapp/')
+                window.location.href = '/todoapp/';
             }
 
         }else{
             setErrorMessage("Please sign in again!!")
             console.error("No refresh token found")
-            router.push('/todoapp/signin')
+            window.location.href = '/todoapp/signin';
         }
         
     }
@@ -165,7 +162,7 @@ export const AuthProvider = ({ children }) => {
             mutation: DELETE_TOKEN_COOKIE,
         })
 
-        router.push('/todoapp/signin')
+        window.location.href = '/todoapp/signin';
     }
 
     

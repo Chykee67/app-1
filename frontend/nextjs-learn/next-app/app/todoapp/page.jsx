@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useEffect } from 'react';
 import { useAuth } from '../lib/AuthContext';
 
@@ -16,7 +15,7 @@ const TodoApp = () => {
 
     return(
         <>
-            <h1>
+            <h1 className='font-bold text-black-700 text-2xl m-2 p-2'>
                 Welcome {user && user !== "Anonymous" ? user : "Guest"}!
             </h1>
         </>

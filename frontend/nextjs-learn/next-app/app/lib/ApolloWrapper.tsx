@@ -9,8 +9,6 @@ import {
     InMemoryCache,
 } from "@apollo/client-integration-nextjs"
 
-import { TestContextProvider } from './TestContext'
-
 export function makeClient(){
     const httpLink = new HttpLink({
         uri: "http://127.0.0.1:8000/graphql/",

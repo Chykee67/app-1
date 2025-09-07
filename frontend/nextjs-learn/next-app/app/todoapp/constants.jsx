@@ -23,7 +23,7 @@ export function LOGIN_AREA({ User }) {
 
 export function SITE_BANNER() {
     return (
-        <div className="bg-blue-500 text-white p-4">
+        <div className="bg-gray-700 text-white p-4">
             <h1 className="text-2xl font-bold">My Todo App</h1>
         </div>
     );
@@ -32,27 +32,27 @@ export function SITE_BANNER() {
 export function NAVIGATION_BAR({ User }) {
 
     return (
-        <nav className="bg-gray-200 p-4">
+        <nav className="bg-gray-200 p-4 font-bold">
             <ul className="flex space-x-4">
                 <li>
-                    <a href="/todoapp" className="text-blue-500 hover:underline">Home</a>
+                    <a href="/todoapp" className="text-gray-700 hover:underline">Home</a>
                 </li>
                 <li>
-                    <a href="/todoapp/all-tasks" className="text-blue-500 hover:underline">All Tasks</a>
+                    <a href="/todoapp/all-tasks" className="text-gray-700 hover:underline">All Tasks</a>
                 </li>
                 <li>
-                    <a href="/todoapp/add-task" className="text-blue-500 hover:underline">Add Task</a>
+                    <a href="/todoapp/add-task" className="text-gray-700 hover:underline">Add Task</a>
                 </li>
                 <li>
                     {User && User !== "Anonymous" ? (
                         <ACCOUNT_AREA User={ User }/>
                     ) : (
-                        <a href="/todoapp/signin" className="text-blue-500 hover:underline">Sign In</a>
+                        <a href="/todoapp/signin" className="text-gray-700 hover:underline">Sign In</a>
                     )}
                 </li>
                 <li>
                     {User && User === "Anonymous"?(
-                        <a href="" className="text-blue-500 hover:underline">Sign Up</a>
+                        <a href="/todoapp/signup" className="text-gray-700 hover:underline">Sign Up</a>
                     ): (
                         <></>
                     )}
@@ -81,12 +81,12 @@ export function ACCOUNT_AREA({ User }){
     }else{
         return (
             <div onMouseOver={toggledown} onMouseLeave={toggleup}>
-                <button className="text-blue-500 hover:underline">Account</button>
+                <button className="text-gray-700 hover:underline">Account</button>
                 {isOpen && (
                     <ul>
-                        <li><a href="/todoapp/profile" className="text-blue-500 hover:underline">Profile</a></li>
+                        <li><a href="/todoapp/profile" className="text-gray-700 hover:underline">Profile</a></li>
                         <li>
-                            <span className="text-blue-500"><LOGIN_AREA User={User}/></span>
+                            <span className="text-gray-700"><LOGIN_AREA User={User}/></span>
                         </li>
                     </ul>
                 )}

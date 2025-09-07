@@ -1,6 +1,5 @@
 'use client'
 
-import { makeClient } from '../lib/ApolloWrapper'
 import { GET_REFRESH_TOKEN } from '../lib/graphql_mutations'
 import { useMutation } from '@apollo/client'
 
