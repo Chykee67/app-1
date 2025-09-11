@@ -7,20 +7,15 @@ import {    GET_REFRESH_TOKEN,
             REVOKE_REFRESH_TOKEN,
             DELETE_TOKEN_COOKIE,
             DELETE_REFRESH_TOKEN_COOKIE,
-            VERIFY_TOKEN
     } from './graphql_mutations'
 
-import { GETJWTREFRESHTOKEN, GETJWTTOKEN } from './actions'
+import { GETJWTREFRESHTOKEN } from './actions'
 import { LOGIN } from './graphql_mutations'
 
 
 export const AuthContext = createContext(null)
 
 export const AuthProvider = ({ children }) => {
-
-    const [refreshed, setRefreshed] = useState(false)
-
-    const [user, setUser] = useState("Anonymous");
 
     const revoked = useRef(false)
 
@@ -38,7 +33,7 @@ export const AuthProvider = ({ children }) => {
                 })
 
                 if (loginData.tokenAuth.token){
-                    window.location.href = '/todoapp/';
+                    window.location.href = '/todoapp/profile';
 
                 }else{}
 
@@ -102,7 +97,6 @@ export const AuthProvider = ({ children }) => {
 
                     //set refreshed state to true if refresh was successful
                     if (refresh_token_data?.refreshToken?.token) {
-                        setRefreshed(true)
                         revoked.current = true
                         window.location.href = window.location.href;
                     }else{}
@@ -110,8 +104,7 @@ export const AuthProvider = ({ children }) => {
                 } catch(error) {
 
                     console.error("Invalid refresh token: ", error)
-                    //window.location.href = '/todoapp/signin';
-                    window.location.href = window.location.href;
+                    window.location.href = '/todoapp/signin';
 
                 }
 
@@ -134,7 +127,7 @@ export const AuthProvider = ({ children }) => {
                 }
             }else{
                 console.log("Refresh token already revoked")
-                window.location.href = '/todoapp/';
+                window.location.href = window.location.href//'/todoapp/'; //PART I CHANGED
             }
 
         }else{
@@ -165,56 +158,12 @@ export const AuthProvider = ({ children }) => {
         window.location.href = '/todoapp/signin';
     }
 
-    
-    const GET_USER = async () => {
-
-        const client = makeClient();
-
-        try {
-            const tk = await GETJWTTOKEN();
-
-            if (tk !== null) {
-
-                const {data} = await client.mutate({
-                    mutation: VERIFY_TOKEN,
-                    variables: { token: tk }
-                })
-
-                if (data?.verifyToken?.payload) {
-                    return { User: data.verifyToken.payload.username, error: null }
-                }else{
-                    return { User: "Anonymous", error: "Invalid token" }
-                }
-
-            }else{
-                return { User: "Anonymous", error: "No token found" }
-            }
-        }catch(error){
-            console.error("Error verifying token:", error);
-            return { User: "Anonymous", error: "Token verification failed" }
-        }
-    }
-
-    const SET_USER = async () => {
-
-        const { User: loggedInUser, error: setUserError } = await GET_USER();
-
-        if (setUserError){
-            console.log("Error from set_user: ", setUserError);
-        }
-
-        setUser(loggedInUser);
-    }
-
 
     return (
         <AuthContext value={{ signIn,
             resetCookies,
-            refreshed,
             signOut,
             errorMessage,
-            SET_USER,
-            user
         }}>
             { children }
         </AuthContext>

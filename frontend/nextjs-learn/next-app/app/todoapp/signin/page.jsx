@@ -30,12 +30,12 @@ function signin(){
             <h1 className="font-black font-serif p-2 m-4 text-2xl">Sign In</h1>
 
             <form onSubmit={handleSubmit} onChange={handleChange}>
-                <input type="text" placeholder="Username" autoFocus required
+                <input type="text" id="username" name="username" placeholder="Username" autoFocus required
                     className="border-gray-700 rounded-full border-2
                         p-2 m-4"
                 />
                 <br />
-                <input type="password" placeholder="Password" required
+                <input type="password" id="password" name="password" placeholder="Password" required
                     className="border-gray-700 rounded-full border-2
                         p-2 m-4"
                 />

@@ -27,3 +27,11 @@ export const SIGNUP_MUTATION = gql`
         }    
     }
     `;
+
+    export const UploadFileMutation = gql`
+    mutation UploadFile($file: Upload!){
+        uploadFile(file: $file){
+            success
+        }
+    }
+    `;

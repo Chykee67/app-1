@@ -2,34 +2,18 @@
 
 import { useState } from 'react';
 import { useAuth } from '../lib/AuthContext';
-import { usePathname } from 'next/navigation';
-
-export function LOGIN_AREA({ User }) {
-
-    const path = usePathname();
-
-    const { signOut } = useAuth();
-
-    if (path === '/todoapp/signin'){
-        return null;
-    }else{
-        if (User && User !== "Anonymous") {
-            return <button onClick={signOut}>Sign Out</button>
-        } else {
-            return null
-        }
-    }
-}
 
 export function SITE_BANNER() {
     return (
         <div className="bg-gray-700 text-white p-4">
-            <h1 className="text-2xl font-bold">My Todo App</h1>
+            <h1 className="text-2xl font-bold">
+                <a href="/todoapp">My Todo App</a>
+            </h1>
         </div>
     );
 }
 
-export function NAVIGATION_BAR({ User }) {
+export function NAVIGATION_BAR() {
 
     return (
         <nav className="bg-gray-200 p-4 font-bold">
@@ -44,29 +28,21 @@ export function NAVIGATION_BAR({ User }) {
                     <a href="/todoapp/add-task" className="text-gray-700 hover:underline">Add Task</a>
                 </li>
                 <li>
-                    {User && User !== "Anonymous" ? (
-                        <ACCOUNT_AREA User={ User }/>
-                    ) : (
-                        <a href="/todoapp/signin" className="text-gray-700 hover:underline">Sign In</a>
-                    )}
-                </li>
-                <li>
-                    {User && User === "Anonymous"?(
-                        <a href="/todoapp/signup" className="text-gray-700 hover:underline">Sign Up</a>
-                    ): (
-                        <></>
-                    )}
+                    <ACCOUNT_AREA />
                 </li>
             </ul>
         </nav>
     );
 }
 
-export function ACCOUNT_AREA({ User }){
-
-    const path = usePathname()
+export function ACCOUNT_AREA(){
 
     const [isOpen, setIsOpen] = useState(false);
+    const { signOut } = useAuth();
+
+    const handleClick = () => {
+        signOut();
+    }
 
     const toggledown = () => {
         setIsOpen(true);
@@ -76,21 +52,17 @@ export function ACCOUNT_AREA({ User }){
         setIsOpen(false);
     }
 
-    if (path === '/todoapp/signin'){
-        return null;
-    }else{
-        return (
-            <div onMouseOver={toggledown} onMouseLeave={toggleup}>
-                <button className="text-gray-700 hover:underline">Account</button>
-                {isOpen && (
-                    <ul>
-                        <li><a href="/todoapp/profile" className="text-gray-700 hover:underline">Profile</a></li>
-                        <li>
-                            <span className="text-gray-700"><LOGIN_AREA User={User}/></span>
-                        </li>
-                    </ul>
-                )}
-            </div>
-        )
-    }
+    return (
+        <div onMouseOver={toggledown} onMouseLeave={toggleup} className="text-gray-700 hover:underline">
+            <button>Account</button>
+            {isOpen && (
+                <ul>
+                    <li><a href="/todoapp/profile">Profile</a></li>
+                    <li>
+                        <button onClick={handleClick}>Sign Out</button>
+                    </li>
+                </ul>
+            )}
+        </div>
+    )
 }

@@ -1,25 +1,21 @@
 'use client';
 
-import { useEffect } from 'react';
-import { useAuth } from '../lib/AuthContext';
+import { useProfile } from './layout';
 
-const TodoApp = () => {
+function TodoApp () {
 
-    const { user, SET_USER } = useAuth();
+    const { username } = useProfile();
 
-    useEffect(
-        () => {
-            (async () => await SET_USER() )();
-        }
-    )
+    return (
+        <div>
+            <h1 className="font-bold text-black text-2xl">Welcome {username}!</h1>
 
-    return(
-        <>
-            <h1 className='font-bold text-black-700 text-2xl m-2 p-2'>
-                Welcome {user && user !== "Anonymous" ? user : "Guest"}!
-            </h1>
-        </>
-    )
+            <div>
+                <a href='/todoapp/upload'>Go to Upload Page</a>
+            </div>
+        </div>
+        
+    );
 }
 
 export default TodoApp;

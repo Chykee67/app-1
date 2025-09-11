@@ -4,8 +4,6 @@ import "./globals.css";
 
 import { ApolloWrapper } from './lib/ApolloWrapper'
 
-import { TestContextProvider } from './lib/TestContext'
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],

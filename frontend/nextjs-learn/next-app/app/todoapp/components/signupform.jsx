@@ -1,9 +1,12 @@
 'use client';
-import { useEffect, useState, useRef } from "react";
-import { useMutation } from "@apollo/client";
+import { useEffect, useState } from "react";
+import { useMutation } from "@apollo/client/react";
 import { SIGNUP_MUTATION } from "../mutations"
 
+import { useAuth } from "@/app/lib/AuthContext";
+
 export function SIGNUPFORM(){
+    const { signIn } = useAuth();
     const [formData, setFormData] = useState({
         username: '',
         email: '',
@@ -60,7 +63,7 @@ export function SIGNUPFORM(){
             if(signup_data){
                 console.log(signup_data)
                 // Signup successful, redirect to login page
-                window.location.href = '/todoapp/signin';
+                signIn(formData.username, formData.password);
             } else if(error){
                 setErrorMessage('Signup failed: ' + error.message);
             }

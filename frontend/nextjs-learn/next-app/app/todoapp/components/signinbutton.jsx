@@ -1,13 +1,9 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
-
 export default function SignInButton(){
 
-    const router = useRouter()
-
     const handleSignIn = () => {
-        router.push('/todoapp/signin')
+        window.location.href = '/todoapp/signin';
     }
 
     return (

@@ -9,11 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@apollo/client": "^3.13.8",
-    "@apollo/client-integration-nextjs": "^0.12.2",
-    "@apollo/experimental-nextjs-app-support": "^0.12.2",
+    "@apollo/client": "^4.0.4",
+    "@apollo/client-integration-nextjs": "^0.13.1",
+    "apollo-upload-client": "^19.0.0",
     "graphql": "^16.11.0",
-    "next": "15.4.3",
+    "next": "^15.5.2",
     "react": "19.1.0",
     "react-dom": "19.1.0"
   },

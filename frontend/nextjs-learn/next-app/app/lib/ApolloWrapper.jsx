@@ -1,7 +1,7 @@
 "use client"
 
 import { AuthProvider } from './AuthContext'
-import { HttpLink } from "@apollo/client"
+import UploadHttpLink from "apollo-upload-client/UploadHttpLink.mjs"
 
 import {
     ApolloNextAppProvider,
@@ -10,7 +10,7 @@ import {
 } from "@apollo/client-integration-nextjs"
 
 export function makeClient(){
-    const httpLink = new HttpLink({
+    const httpLink = new UploadHttpLink({
         uri: "http://127.0.0.1:8000/graphql/",
         credentials: "include"
     })
@@ -21,7 +21,7 @@ export function makeClient(){
     })
 }
 
-export function ApolloWrapper({ children }: React.PropsWithChildren){
+export function ApolloWrapper({ children }){
     return(
         <ApolloNextAppProvider makeClient={makeClient}>
             <AuthProvider>
