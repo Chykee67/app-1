@@ -1,0 +1,3 @@
+backend/cookbook
+*./db.sqlite3
+*./media

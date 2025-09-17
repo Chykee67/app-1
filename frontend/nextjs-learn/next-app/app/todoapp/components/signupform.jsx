@@ -62,7 +62,7 @@ export function SIGNUPFORM(){
 
             if(signup_data){
                 console.log(signup_data)
-                // Signup successful, redirect to login page
+                // Signup successful, redirect to signin page
                 signIn(formData.username, formData.password);
             } else if(error){
                 setErrorMessage('Signup failed: ' + error.message);
@@ -143,7 +143,7 @@ export function SIGNUPFORM(){
             </form>
 
             <div>
-                <p className="font-bold">Already have an account? Please sign in <a href="/todoapp/login" className="text-amber-400 hover:underline">here!</a></p>
+                <p className="font-bold">Already have an account? Please sign in <a href="/todoapp/signin" className="text-amber-400 hover:underline">here!</a></p>
             </div>
 
         </div>

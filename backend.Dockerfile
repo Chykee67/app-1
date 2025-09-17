@@ -1,15 +1,18 @@
 FROM python:3.13-slim-bookworm
 
-RUN apt update && apt install -y nginx build-essential
-
 WORKDIR /app
 
-COPY /backend/backend_requirements.txt /app/backend/backend_requirements.txt
+RUN apt update
+
+RUN apt install -y build-essential \
+    libpcre3 libpcre3-dev
+
+COPY ./backend /app/backend
 
 RUN pip install -r /app/backend/backend_requirements.txt
 
-COPY /backend/mybasicapp_graphql /app/backend/mybasicapp_graphql
+RUN python /app/backend/mybasicapp_graphql/manage.py makemigrations account todo
 
-EXPOSE 8000
+RUN python /app/backend/mybasicapp_graphql/manage.py migrate
 
-CMD ["python", "/app/backend/mybasicapp_graphql/manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["uwsgi", "/app/backend/djangoapp.ini"]
