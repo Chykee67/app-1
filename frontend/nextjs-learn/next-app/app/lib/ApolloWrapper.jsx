@@ -11,7 +11,7 @@ import {
 
 export function makeClient(){
     const httpLink = new UploadHttpLink({
-        uri: "http://127.0.0.1:3031/graphql/",
+        uri: "http://127.0.0.1/graphql/",
         credentials: "include"
     })
 
