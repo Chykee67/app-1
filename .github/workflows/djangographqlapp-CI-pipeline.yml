@@ -3,9 +3,9 @@ name: Django GraphQL App CI Pipeline
 on:
   push:
     branches:
-      - 'django-version/graphql'
+      - 'django-version/**'
     paths:
-      - 'app-1/backend/**'
+      - '**/backend/**'
 
 jobs:
   build_and_push:
