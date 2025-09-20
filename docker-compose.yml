@@ -1,0 +1,37 @@
+services:
+  backend_server:
+    image: chykee67/django_graphql_app:latest
+    container_name: backend_server
+    ports:
+      - "3031:3031"
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: ./media
+        target: /app/media
+    networks:
+      - app-network
+
+  nginx_server:
+    image: nginx:latest
+    container_name: nginx_server
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: ./nginx.conf
+        target: /etc/nginx/nginx.conf
+      - type: bind
+        source: ./media
+        target: /media
+    depends_on:
+      - backend_server
+    networks:
+      - app-network
+
+
+
+networks:
+  app-network:
+    driver: bridge
