@@ -146,7 +146,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_CREDENTIALS = True
 
-CSRF_COOKIE_DOMAIN = 'http://192.168.25.128:3000'
+CSRF_COOKIE_SAMESITE = ""
 
 from datetime import timedelta
 
