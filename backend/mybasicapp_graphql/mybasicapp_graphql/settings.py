@@ -146,6 +146,8 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_CREDENTIALS = True
 
+CSRF_COOKIE_DOMAIN = '192.168.25.128'
+
 from datetime import timedelta
 
 GRAPHQL_JWT = {
