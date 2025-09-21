@@ -9,7 +9,7 @@ RUN apt install -y build-essential \
 
 COPY ./backend /app/backend
 
-COPY ./backend_entrypoint /app/backend_entrypoint
+COPY ./backend_entrypoint.sh /app/backend_entrypoint.sh
 
 RUN mkdir /app/media/
 
