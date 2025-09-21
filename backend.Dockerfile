@@ -9,6 +9,8 @@ RUN apt install -y build-essential \
 
 COPY ./backend /app/backend
 
+COPY ./backend_entrypoint /app/backend_entrypoint
+
 RUN mkdir /app/media/
 
 VOLUME /app/media/
@@ -17,8 +19,4 @@ RUN pip install -r /app/backend/backend_requirements.txt
 
 EXPOSE 3031
 
-RUN python /app/backend/mybasicapp_graphql/manage.py makemigrations account todo
-
-RUN python /app/backend/mybasicapp_graphql/manage.py migrate
-
-CMD ["uwsgi", "/app/backend/djangoapp.ini"]
+CMD ["./app/backend_entrypoint.sh"]
