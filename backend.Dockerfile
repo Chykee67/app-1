@@ -19,4 +19,4 @@ RUN pip install -r /app/backend/backend_requirements.txt
 
 EXPOSE 3031
 
-CMD ["./app/backend_entrypoint.sh"]
+CMD ["/app/backend_entrypoint.sh"]
