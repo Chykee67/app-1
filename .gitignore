@@ -3,4 +3,6 @@ backend/.venv
 *.pyc
 media
 djangodev
-*.sh
+./app-update.sh
+./docker-reset.sh
+./bad.Dockerfile
