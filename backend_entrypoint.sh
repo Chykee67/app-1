@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/bin/bash
 
 python3 /app/backend/mybasicapp_graphql/manage.py makemigrations account todo
 
