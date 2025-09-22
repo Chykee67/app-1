@@ -9,10 +9,6 @@ function TodoApp () {
     return (
         <div>
             <h1 className="font-bold text-black text-2xl">Welcome {username}!</h1>
-
-            <div>
-                <a href='/todoapp/upload'>Go to Upload Page</a>
-            </div>
         </div>
         
     );

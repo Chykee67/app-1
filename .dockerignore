@@ -1,1 +1,7 @@
 *./db.sqlite3
+node_modules
+.next
+.git
+*.Dockerfile
+.dockerignore
+README.md
