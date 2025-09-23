@@ -1,8 +1,0 @@
-*.sqlite3
-backend/.venv
-*.pyc
-media
-djangodev
-./app-update.sh
-./docker-reset.sh
-./bad.Dockerfile
