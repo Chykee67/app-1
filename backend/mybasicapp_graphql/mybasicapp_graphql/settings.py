@@ -79,23 +79,23 @@ WSGI_APPLICATION = 'mybasicapp_graphql.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'djangoappdb',
-        'USER': 'chikeluba',
-        'PASSWORD': 'treason',
-        'HOST': '192.168.25.128',
-        'PORT': 5432,
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'djangoappdb',
+#        'USER': 'chikeluba',
+#        'PASSWORD': 'treason',
+#        'HOST': '192.168.25.128',
+#        'PORT': 5432,
+#    }
+#}
 
 
 # Password validation
@@ -166,7 +166,7 @@ GRAPHQL_JWT = {
     "JWT_LONG_RUNNING_REFRESH_TOKEN": True,
     "JWT_EXPIRATION_DELTA": timedelta(minutes=10),
     "JWT_REFRESH_EXPIRATION_DELTA": timedelta(days=7),
-    "JWT_COOKIE_SECURE": True,
+#    "JWT_COOKIE_SECURE": True,
 }
 
 AUTH_USER_MODEL = 'account.AppUser'
