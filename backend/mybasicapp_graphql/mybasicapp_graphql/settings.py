@@ -92,7 +92,7 @@ DATABASES = {
         'NAME': 'djangoappdb',
         'USER': 'chikeluba',
         'PASSWORD': 'treason',
-        'HOST': 'localhost',
+        'HOST': 'nginx_server',
         'PORT': 5432,
     }
 }

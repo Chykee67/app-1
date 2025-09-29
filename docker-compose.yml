@@ -5,7 +5,6 @@ services:
     pull_policy: always
     ports:
       - "3031:3031"
-      - "5432:5432"
     restart: unless-stopped
     volumes:
       - type: bind
@@ -34,6 +33,7 @@ services:
     pull_policy: always
     ports:
       - "80:80"
+      - "5432"
     restart: unless-stopped
     volumes:
       - type: bind
