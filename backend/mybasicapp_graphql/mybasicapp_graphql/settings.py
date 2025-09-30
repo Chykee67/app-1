@@ -153,12 +153,6 @@ AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
-
-CORS_ALLOW_CREDENTIALS = True
-
-CSRF_COOKIE_SAMESITE = ""
-
 from datetime import timedelta
 
 GRAPHQL_JWT = {
@@ -170,3 +164,15 @@ GRAPHQL_JWT = {
 }
 
 AUTH_USER_MODEL = 'account.AppUser'
+
+#Cookie-related settings
+
+#CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost",
+]
+
+CORS_ALLOW_CREDENTIALS = True
+
+CSRF_COOKIE_SAMESITE = ""
