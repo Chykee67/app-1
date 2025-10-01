@@ -171,6 +171,7 @@ AUTH_USER_MODEL = 'account.AppUser'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost",
+    "https://kandra-gonadotropic-ethelene.ngrok-free.dev",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
