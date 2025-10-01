@@ -11,7 +11,7 @@ import {
 
 export function makeClient(){
     const httpLink = new UploadHttpLink({
-        uri: "http://localhost/graphql/",
+        uri: "https://kandra-gonadotropic-ethelene.ngrok-free.dev/graphql/",
         credentials: "include"
     })
 
