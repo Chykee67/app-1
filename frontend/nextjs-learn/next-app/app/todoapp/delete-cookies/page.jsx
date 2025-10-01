@@ -1,24 +1,20 @@
-'use client'
-
 import { DELETE_TOKEN_COOKIE } from '../../lib/graphql_mutations'
 
-import { useMutation } from '@apollo/client'
+import { getClient } from '../../lib/ApolloClient'
 
-export default function DeleteCookies(){
-    const [deleteCookie, { loading, data, error }] = useMutation(DELETE_TOKEN_COOKIE)
+export default async function DeleteCookies(){
 
     const handleClick = async(e) => {
         e.preventDefault();
 
         try {
-            const { data } = await deleteCookie();
+            const { data } = await getClient().mutate(
+                {mutation: DELETE_TOKEN_COOKIE}
+            )
         } catch(error){
             console.error('deleting cookie error', error);
         }
     }
-
-    if (loading) return <p>Loading...</p>
-    if (error) return <p>Error: {error.messages}</p>
 
     return (
         <div>
