@@ -151,9 +151,14 @@ export const AuthProvider = ({ children }) => {
             mutation: DELETE_REFRESH_TOKEN_COOKIE,
         })
 
-        await client.mutate({
-            mutation: DELETE_TOKEN_COOKIE,
-        })
+        try {
+            const { data: delete_token_data } = await client.mutate({
+                mutation: DELETE_TOKEN_COOKIE
+            })
+            console.log(delete_token_data)
+        }catch(error){
+            console.error('Signout token delete error', error)
+        }
 
         window.location.href = '/todoapp/signin';
     }
