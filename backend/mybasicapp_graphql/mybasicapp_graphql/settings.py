@@ -161,6 +161,7 @@ GRAPHQL_JWT = {
     "JWT_EXPIRATION_DELTA": timedelta(minutes=10),
     "JWT_REFRESH_EXPIRATION_DELTA": timedelta(days=7),
     "JWT_COOKIE_SECURE": True,
+    #"JWT_COOKIE_SAMESITE": "None",
 }
 
 AUTH_USER_MODEL = 'account.AppUser'
