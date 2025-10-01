@@ -162,6 +162,7 @@ GRAPHQL_JWT = {
     "JWT_REFRESH_EXPIRATION_DELTA": timedelta(days=7),
     "JWT_COOKIE_SECURE": True,
     "JWT_COOKIE_SAMESITE": "None",
+    "JWT_COOKIE_DOMAIN": "kandra-gonadotropic-ethelene.ngrok-free.dev",
 }
 
 AUTH_USER_MODEL = 'account.AppUser'
