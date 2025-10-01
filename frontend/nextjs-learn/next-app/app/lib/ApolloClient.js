@@ -10,7 +10,7 @@ export const { getClient, query, PreloadQuery } = registerApolloClient(() => {
   return new ApolloClient({
     cache: new InMemoryCache(),
     link: new UploadHttpLink({
-      uri: "http://localhost/graphql/",
+      uri: "https://kandra-gonadotropic-ethelene.ngrok-free.dev/graphql/",
       credentials: "include"
     })
   })
