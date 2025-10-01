@@ -222,7 +222,7 @@ class HttpResponseBase:
         secure=False,
         httponly=False,
         samesite=None,
-        partitioned=False,
+        partitioned=True,
     ):
         """
         Set a cookie.
@@ -305,7 +305,7 @@ class HttpResponseBase:
             secure=secure,
             expires="Thu, 01 Jan 1970 00:00:00 GMT",
             samesite=samesite,
-            partitioned=False,
+            partitioned=True,
         )
 
     # Common methods used by subclasses
