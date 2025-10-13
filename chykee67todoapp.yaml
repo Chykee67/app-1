@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: chykee67todoapp
+  labels:
+    app: chykee67todoapp
+spec:
+  containers:
+    - name: backend_server
+      image: chykee67/django_graphql_app:latest
+      imagePullPolicy: Always
+      ports:
+        - containerPort: 3031
+          name: backend-port
+      restartPolicy: OnFailure

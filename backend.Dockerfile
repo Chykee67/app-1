@@ -17,6 +17,12 @@ VOLUME /app/media/
 
 RUN pip install -r /app/backend/backend_requirements.txt
 
+COPY ./response.py /usr/local/lib/python3.13/site-packages/django/http/response.py
+
+COPY ./utils.py /usr/local/lib/python3.13/site-packages/graphql_jwt/utils.py
+
+COPY ./cookies.py /usr/local/lib/python3.13/http/cookies.py
+
 EXPOSE 3031
 
 CMD ["/app/backend_entrypoint.sh"]
