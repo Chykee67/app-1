@@ -2,7 +2,7 @@ services:
   backend_server:
     image: chykee67/django_graphql_app:latest
     container_name: backend_server
-    #pull_policy: always
+    pull_policy: always
     ports:
       - "3031:3031"
     restart: unless-stopped
@@ -36,9 +36,6 @@ services:
       - "5432"
     restart: unless-stopped
     volumes:
-      - type: bind
-        source: ./nginx.conf
-        target: /etc/nginx/nginx.conf
       - type: bind
         source: ./media
         target: /media
