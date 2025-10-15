@@ -5,7 +5,7 @@ on:
         branches:
             - 'django-version/**'
         paths:
-            - '**/nginx.conf'
+            - '**/nginx/**'
 
 jobs:
   build_and_push:
