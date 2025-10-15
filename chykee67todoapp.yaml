@@ -6,10 +6,17 @@ metadata:
     app: chykee67todoapp
 spec:
   containers:
-    - name: backend_server
+    - name: backend-server
       image: chykee67/django_graphql_app:latest
       imagePullPolicy: Always
       ports:
         - containerPort: 3031
           name: backend-port
-      restartPolicy: OnFailure
+      volumeMounts:
+        - name: app-storage
+          mountPath: /app/media
+
+  volumes:
+    - name: app-storage
+      persistentVolumeClaim:
+        claimName: app-pvc

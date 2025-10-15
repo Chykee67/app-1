@@ -2,7 +2,7 @@ services:
   backend_server:
     image: chykee67/django_graphql_app:latest
     container_name: backend_server
-    pull_policy: always
+    #pull_policy: always
     ports:
       - "3031:3031"
     restart: unless-stopped
@@ -10,18 +10,6 @@ services:
       - type: bind
         source: ./media
         target: /app/media
-
-      #- type: bind
-      #  source: ./cookies.py
-      #  target: /usr/local/lib/python3.13/http/cookies.py
-
-      #- type: bind
-      #  source: ./utils.py
-      #  target: /usr/local/lib/python3.13/site-packages/graphql_jwt/utils.py
-
-      #- type: bind
-      #  source: ./response.py
-      #  target: /usr/local/lib/python3.13/site-packages/django/http/response.py
     depends_on:
       - frontend_server
     networks:
