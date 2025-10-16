@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-_a#jrrayiz(1^f3tg$302j@+_lgqhwumw&x#3h%qh0r0lqfq68
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['kandra-gonadotropic-ethelene.ngrok-free.dev', 'localhost']
+ALLOWED_HOSTS = ['kandra-gonadotropic-ethelene.ngrok-free.dev', 'localhost', '192.168.49.2']
 
 
 # Application definition
@@ -159,7 +159,7 @@ from datetime import timedelta
 GRAPHQL_JWT = {
     "JWT_VERIFY_EXPIRATION": True,
     "JWT_LONG_RUNNING_REFRESH_TOKEN": True,
-    "JWT_EXPIRATION_DELTA": timedelta(seconds=15),
+    "JWT_EXPIRATION_DELTA": timedelta(minutes=30),
     "JWT_REFRESH_EXPIRATION_DELTA": timedelta(days=7),
     "JWT_COOKIE_SECURE": True,
     "JWT_COOKIE_SAMESITE": "None",
@@ -175,6 +175,7 @@ AUTH_USER_MODEL = 'account.AppUser'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost",
     "https://kandra-gonadotropic-ethelene.ngrok-free.dev",
+    "http://192.168.49.2",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
