@@ -6,6 +6,12 @@ metadata:
     app: chykee67todoapp
 spec:
   containers:
+    - name: frontend-server
+      image: chykee67/nextjs_app:latest
+      imagePullPolicy: Always
+      ports:
+        - containerPort: 3000
+          name: frontend-port
     - name: backend-server
       image: chykee67/django_graphql_app:latest
       imagePullPolicy: Always
@@ -13,8 +19,25 @@ spec:
         - containerPort: 3031
           name: backend-port
       volumeMounts:
-        - name: app-storage
-          mountPath: /app/media
+        - mountPath: /app/media
+          name: app-storage
+          subPath: media
+        - mountPath: /app/static
+          name: app-storage
+          subPath: static
+    - name: nginx-server
+      image: nginx:latest
+      imagePullPolicy: Always
+      ports:
+        - containerPort: 80
+          name: nginx-port
+      volumeMounts:
+        - mountPath: /app/media
+          name: app-storage
+          subPath: media
+        - mountPath: /app/static
+          name: app-storage
+          subPath: static
 
   volumes:
     - name: app-storage

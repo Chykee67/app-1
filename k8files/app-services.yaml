@@ -7,7 +7,22 @@ spec:
     app: chykee67todoapp
   ports:
     - protocol: TCP
+      name: backend-service-port
       port: 3031
-      #targetPort: 3031
       targetPort: backend-port
-  #type: ClusterIP
+  type: ClusterIP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: chykee67todoapp
+  ports:
+    - protocol: TCP
+      name: nginx-svc-port
+      port: 80
+      targetPort: nginx-port
+  type: ClusterIP

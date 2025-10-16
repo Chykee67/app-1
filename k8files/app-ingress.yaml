@@ -13,3 +13,12 @@ metadata:
 spec:
   ingressClassName: nginx-controller-ingressclass
   rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: nginx-service
+                port:
+                  name: nginx-svc-port

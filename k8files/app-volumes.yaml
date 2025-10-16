@@ -19,7 +19,7 @@ spec:
   persistentVolumeReclaimPolicy: Delete
   storageClassName: local-storage
   local:
-    path: /app-data/media
+    path: /app-data
   nodeAffinity:
     required:
       nodeSelectorTerms:
