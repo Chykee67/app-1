@@ -26,7 +26,7 @@ spec:
           name: app-storage
           subPath: static
     - name: nginx-server
-      image: nginx:latest
+      image: chykee67/nginx_server:latest
       imagePullPolicy: Always
       ports:
         - containerPort: 80
