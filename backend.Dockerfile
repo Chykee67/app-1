@@ -29,7 +29,11 @@ COPY ./cookies.py /usr/local/lib/python3.13/http/cookies.py
 
 RUN mkdir /app/media/
 
+RUN mkdir /app/static/
+
 VOLUME /app/media/
+
+VOLUME /app/static/
 
 EXPOSE 3031
 

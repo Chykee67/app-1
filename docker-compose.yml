@@ -10,6 +10,9 @@ services:
       - type: bind
         source: ./media
         target: /app/media
+      - type: bind
+        source: ./static
+        target: /app/static
     depends_on:
       - frontend_server
     networks:
@@ -28,7 +31,7 @@ services:
 
 
   nginx_server:
-    image: nginx:latest
+    image: chykee67/nginx_server:latest
     container_name: nginx_server
     pull_policy: always
     ports:
@@ -39,6 +42,9 @@ services:
       - type: bind
         source: ./media
         target: /media
+      - type: bind
+        source: ./static
+        target: /static
     depends_on:
       - backend_server
     networks:

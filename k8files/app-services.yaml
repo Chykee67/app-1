@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+spec:
+  selector:
+    app: chykee67todoapp
+  ports:
+    - protocol: TCP
+      port: 3031
+      #targetPort: 3031
+      targetPort: backend-port
+  #type: ClusterIP

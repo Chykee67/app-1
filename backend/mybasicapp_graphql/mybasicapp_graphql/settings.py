@@ -133,6 +133,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = Path(__file__).resolve().parent.parent.parent.parent / 'static'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = Path(__file__).resolve().parent.parent.parent.parent / 'media'
 
