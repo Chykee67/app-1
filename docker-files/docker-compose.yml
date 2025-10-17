@@ -8,10 +8,10 @@ services:
     restart: unless-stopped
     volumes:
       - type: bind
-        source: ./media
+        source: ../media
         target: /app/media
       - type: bind
-        source: ./static
+        source: ../static
         target: /app/static
     depends_on:
       - frontend_server
@@ -40,10 +40,10 @@ services:
     restart: unless-stopped
     volumes:
       - type: bind
-        source: ./media
+        source: ../media
         target: /media
       - type: bind
-        source: ./static
+        source: ../static
         target: /static
     depends_on:
       - backend_server
