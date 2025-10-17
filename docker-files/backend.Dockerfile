@@ -25,7 +25,7 @@ COPY ./response.py /usr/local/lib/python3.13/site-packages/django/http/response.
 
 COPY ./utils.py /usr/local/lib/python3.13/site-packages/graphql_jwt/utils.py
 
-COPY ../cookies.py /usr/local/lib/python3.13/http/cookies.py
+COPY ./cookies.py /usr/local/lib/python3.13/http/cookies.py
 
 RUN mkdir /app/media/
 

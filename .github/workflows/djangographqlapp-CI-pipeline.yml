@@ -32,7 +32,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
         with:
-          context: .
+          context: ./docker-files
           file: docker-files/backend.Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME}}/django_graphql_app:latest
