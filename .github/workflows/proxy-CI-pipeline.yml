@@ -33,7 +33,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: proxy.Dockerfile
+          file: docker-files/proxy.Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME}}/nginx_server:latest
           labels: ${{ steps.meta.outputs.labels }}
