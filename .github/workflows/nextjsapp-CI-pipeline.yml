@@ -33,7 +33,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: frontend.Dockerfile
+          file: docker-files/frontend.Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME}}/nextjs_app:latest
           labels: ${{ steps.meta.outputs.labels }}

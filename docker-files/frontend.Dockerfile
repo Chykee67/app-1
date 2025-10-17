@@ -4,12 +4,12 @@ FROM node:20-alpine AS builder
 
 WORKDIR /next-app
 
-COPY ./frontend/nextjs-learn/next-app/package*.json /next-app/
-COPY ./frontend/nextjs-learn/next-app/tsconfig.json /next-app/
+COPY ../frontend/nextjs-learn/next-app/package*.json /next-app/
+COPY ../frontend/nextjs-learn/next-app/tsconfig.json /next-app/
 
 RUN npm install
 
-COPY ./frontend/nextjs-learn/next-app/ /next-app/
+COPY ../frontend/nextjs-learn/next-app/ /next-app/
 
 RUN npm run build
 

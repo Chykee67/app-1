@@ -33,7 +33,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: backend.Dockerfile
+          file: docker-files/backend.Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME}}/django_graphql_app:latest
           labels: ${{ steps.meta.outputs.labels }}
