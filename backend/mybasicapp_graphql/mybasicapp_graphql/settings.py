@@ -168,7 +168,7 @@ GRAPHQL_JWT = {
 
 AUTH_USER_MODEL = 'account.AppUser'
 
-#Cookies-related settings
+#Cookies-related setting
 
 #CORS_ALLOW_ALL_ORIGINS = True
 
