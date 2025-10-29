@@ -1,11 +1,34 @@
 'use client';
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
-import Card from './components/card'
+import Card from '@/utils/components/card';
+import SavedCard from '@/utils/components/savedCard';
+import { makeClient } from '@/lib/apollo/ApolloWrapper';
+import { GET_ALL_CARDS } from '@/utils/queries/cardQueries';
 
 export default function Home() {
 
+  const cardsRef = useRef([]);
+
   const [cards, setCards] = useState([]);
+
+  
+
+  useEffect(() => {
+    (async () => {
+      const client = makeClient();
+
+      const response = await client.query({
+        query: GET_ALL_CARDS
+      });
+
+      if(response?.data?.allCards?.edges) {
+        setCards(response.data.allCards.edges);
+      }
+
+      console.log(response.data.allCards.edges);
+    })();
+  }, []);
 
   return (
     <>
@@ -13,12 +36,14 @@ export default function Home() {
         <h1>Welcome to Database Planner</h1>
       </div>
       <div className="flex justify-around">
-        {cards.map((card, index) => (
-          <Card key={index} />
+        <Card />
+      </div>
+      <div className="flex justify-around">
+        {cards.map((card, index ) => (
+          <div key={index}>
+            <SavedCard key={index} title={card.node.title} items={card.node.items.edges} />
+          </div>
         ))}
-        <button onClick={() => {
-          setCards(prevState => [...prevState, { title: 'New Card', items: [] }]);
-        }}>Add Card</button>
       </div>
     </>
   )
