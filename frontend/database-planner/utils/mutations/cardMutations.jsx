@@ -9,3 +9,11 @@ export const CREATE_CARD = gql`
         }
     }
 `
+
+export const DELETE_CARD = gql`
+    mutation DeleteCard($title: String!){
+        deleteCard(input: {title: $title}){
+            deleted
+        }
+    }
+`

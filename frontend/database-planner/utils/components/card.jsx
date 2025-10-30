@@ -7,22 +7,28 @@ import { CREATE_ITEM } from '../mutations/itemMutation';
 
 export default function Card(){
 
-    const [cardTitle, setCardTitle] = useState('New card');
+    const [cardTitle, setCardTitle] = useState(null);
     
     const [cardItems, setCardItems] = useState([]);
+
+    const [AddItemError, setAddItemError] = useState(null);
 
     const client = makeClient();
 
     const itemRef = useRef([]);
 
     const handleAddTitle = (e) => {
-        setCardTitle(e.target.value);
+        setCardTitle(e.target.value.toUpperCase());
         e.target.value = '';
     }
 
     const handleAddItem = (e) => {
-        itemRef.current = [...itemRef.current, e.target.value];
-        setCardItems(itemRef.current);
+        if(!itemRef.current.includes(e.target.value) && e.target.value.trim() !== ''){
+            itemRef.current = [...itemRef.current, e.target.value.toLowerCase()];
+            setCardItems(itemRef.current);
+        }else{
+            setAddItemError(`${e.target.value} already exists!`);
+        }
         e.target.value = '';
     }
 
@@ -69,8 +75,9 @@ export default function Card(){
                 <input type='text' id='cardItem' name='cardItem'
                     onKeyDown={(e) => e.key === 'Enter' && handleAddItem(e)} placeholder="Add Item"
                     className="border border-gray-300 rounded-md p-2 m-0.5"
-                />
-                <button className='hover:text-rose-700 text-bold m-0.5'
+                /><br />
+                {AddItemError && <p className="text-red-500">{AddItemError}</p>}
+                <button className='hover:text-rose-700 text-bold m-1'
                     onClick={handleSaveCard}
                 >Save</button>
             </div>

@@ -1,5 +1,5 @@
 'use client';
-import { useState, useRef, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 import Card from '@/utils/components/card';
 import SavedCard from '@/utils/components/savedCard';
@@ -7,8 +7,6 @@ import { makeClient } from '@/lib/apollo/ApolloWrapper';
 import { GET_ALL_CARDS } from '@/utils/queries/cardQueries';
 
 export default function Home() {
-
-  const cardsRef = useRef([]);
 
   const [cards, setCards] = useState([]);
 
@@ -25,8 +23,6 @@ export default function Home() {
       if(response?.data?.allCards?.edges) {
         setCards(response.data.allCards.edges);
       }
-
-      console.log(response.data.allCards.edges);
     })();
   }, []);
 

@@ -29,12 +29,32 @@ class CreateItem(graphene.relay.ClientIDMutation):
         card = graphene.String(required=True)
 
     def mutate_and_get_payload(root, info, **input):
-        item = Item(
-            title = input.get('title'),
-            card = Card.objects.get(title=input.get('card'))
-        )
-        item.save()
-        return CreateItem(item=item)
+        try:
+            item = Item.objects.get(title=input.get("title"), card__title=input.get("card"))
+            raise Exception(f"{item.title} already exists!")
+        except Item.DoesNotExist:
+            item = Item(
+                title = input.get('title'),
+                card = Card.objects.get(title=input.get('card'))
+            )
+            item.save()
+            return CreateItem(item=item)
+    
+class DeleteItem(graphene.relay.ClientIDMutation):
+    deleted = graphene.String()
+
+    class Input:
+        title = graphene.String(required=True)
+        card = graphene.String(required=True)
+
+    def mutate_and_get_payload(root, info, **input):
+        try:
+            item = Item.objects.get(title=input.get("title"), card__title=input.get("card"))
+        except Item.DoesNotExist:
+            raise Exception("No such item!")
+        else:
+            item.delete()
+        return DeleteItem(deleted="deleted")
     
 class CreateCard(graphene.relay.ClientIDMutation):
 
@@ -50,9 +70,27 @@ class CreateCard(graphene.relay.ClientIDMutation):
         card.save()
         return CreateCard(card=card)
     
+class DeleteCard(graphene.relay.ClientIDMutation):
+    deleted = graphene.String()
+
+    class Input:
+        title = graphene.String(required=True)
+
+    def mutate_and_get_payload(root, info, **input):
+        try:
+            card = Card.objects.get(title=input.get("title"))
+        except Card.DoesNotExist:
+            raise Exception("No such card!")
+        else:
+            card.delete()
+        return DeleteCard(deleted="deleted")
+
+    
 class Mutation(graphene.ObjectType):
     create_card = CreateCard.Field()
+    delete_card = DeleteCard.Field()
     create_item = CreateItem.Field()
+    delete_item = DeleteItem.Field()
 
 
 class Query(graphene.ObjectType):

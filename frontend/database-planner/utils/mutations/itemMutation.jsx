@@ -10,3 +10,11 @@ export const CREATE_ITEM = gql`
         }
     }
 `
+
+export const DELETE_ITEM = gql`
+    mutation DeleteItem($title: String!, $card: String!){
+        deleteItem(input: {title: $title, card: $card}){
+            deleted
+        }
+    }
+`
