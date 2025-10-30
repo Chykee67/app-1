@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-_a#jrrayiz(1^f3tg$302j@+_lgqhwumw&x#3h%qh0r0lqfq68
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['kandra-gonadotropic-ethelene.ngrok-free.dev', 'localhost', '192.168.49.2']
+ALLOWED_HOSTS = ['kandra-gonadotropic-ethelene.ngrok-free.dev', 'localhost', '127.0.0.1', '192.168.49.2']
 
 
 # Application definition
@@ -176,6 +176,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost",
     "https://kandra-gonadotropic-ethelene.ngrok-free.dev",
     "http://192.168.49.2",
+    "http://127.0.0.1",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
