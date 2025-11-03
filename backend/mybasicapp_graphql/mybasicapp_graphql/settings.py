@@ -142,6 +142,8 @@ MEDIA_ROOT = Path(__file__).resolve().parent.parent.parent.parent / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+AUTH_USER_MODEL = 'account.AppUser'
+
 GRAPHENE = {
     'SCHEMA': 'mybasicapp_graphql.schema.schema',
     'MIDDLEWARE': [
@@ -161,28 +163,26 @@ GRAPHQL_JWT = {
     "JWT_LONG_RUNNING_REFRESH_TOKEN": True,
     "JWT_EXPIRATION_DELTA": timedelta(minutes=30),
     "JWT_REFRESH_EXPIRATION_DELTA": timedelta(days=7),
-    "JWT_COOKIE_SECURE": True,
-    "JWT_COOKIE_SAMESITE": "None",
+    #"JWT_COOKIE_SECURE": True,
+    #"JWT_COOKIE_SAMESITE": "None",
     #"JWT_COOKIE_DOMAIN": "kandra-gonadotropic-ethelene.ngrok-free.dev",
 }
 
-AUTH_USER_MODEL = 'account.AppUser'
-
 #Cookies-related settings
 
-#CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = True
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost",
-    "https://kandra-gonadotropic-ethelene.ngrok-free.dev",
-    "http://192.168.49.2",
-    "http://127.0.0.1",
-]
+#CORS_ALLOWED_ORIGINS = [
+#    "http://localhost",
+#    "http://127.0.0.1",
+#    "https://kandra-gonadotropic-ethelene.ngrok-free.dev",
+#    "http://192.168.49.2",
+#]
 
 CORS_ALLOW_CREDENTIALS = True
 
-CSRF_COOKIE_SAMESITE = "None"
+#CSRF_COOKIE_SAMESITE = "None"
 
-CSRF_COOKIE_SECURE = True
+#CSRF_COOKIE_SECURE = True
 
-CSRF_COOKIE_HTTPONLY = True
+#CSRF_COOKIE_HTTPONLY = True

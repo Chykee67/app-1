@@ -1,16 +1,31 @@
 import { gql } from '@apollo/client';
 
-export const GET_ALL_TASKS = gql`query MyQuery {
-        allTasks {
+export const GET_ALL_TASKS = gql`
+    query GetAllTasks{
+        allTasks{
             edges{
                 node{
-                    id
                     title
-                    description
+                    due
                 }
             }
         }
-    }`;
+    }
+`
+
+export const GET_TASK = gql`
+    query GetTask($title: String!){
+        allTasks(title: $title){
+            edges{
+                node{
+                    title
+                    description
+                    due
+                }
+            }
+        }
+    }
+`
 
 export const GET_PROFILE_DETAILS = gql`
     query GetProfileDetails{

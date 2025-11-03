@@ -41,7 +41,7 @@ class Task(models.Model):
                                    )
 
     class Meta:
-        ordering = ['due']
+        ordering = ["created", "due"]
 
 
     def __str__(self):

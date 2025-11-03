@@ -35,3 +35,21 @@ export const SIGNUP_MUTATION = gql`
         }
     }
     `;
+
+    export const CREATE_TASK = gql`
+        mutation CreateTask($title: String!, $description: String!, $due: DateTime!, $priority: String){
+            createTask(input: {
+                title: $title,
+                description: $description,
+                due: $due
+                priority: $priority
+            }){
+                task{
+                    title
+                    description
+                    due
+                    priority
+                }
+            }
+        }
+    `
