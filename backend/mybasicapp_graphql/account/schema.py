@@ -93,6 +93,7 @@ class CreateUser(graphene.relay.ClientIDMutation):
         first_name = graphene.String()
         last_name = graphene.String()
         bio = graphene.String()
+        timezone = graphene.String()
 
     def mutate_and_get_payload(root, info, **input):
         user = User.objects.create_user(
@@ -101,11 +102,13 @@ class CreateUser(graphene.relay.ClientIDMutation):
             password=input.get('password'),
             first_name=input.get('first_name', ''),
             last_name=input.get('last_name', ''),
+            timezone=input.get('timezone', 'UTC')
         )
 
         profile = Profile(
             user=user,
             bio=input.get('bio', ''),
+            timezone=input.get('timezone', 'UTC')
         )
         profile.save()
 

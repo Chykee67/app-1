@@ -7,20 +7,22 @@ export const GET_ALL_TASKS = gql`
                 node{
                     title
                     due
+                    status
                 }
             }
         }
     }
 `
 
-export const GET_TASK = gql`
-    query GetTask($title: String!){
+export const GET_TASK_DETAILS = gql`
+    query GetTaskDetails($title: String!){
         allTasks(title: $title){
             edges{
                 node{
                     title
                     description
                     due
+                    status
                 }
             }
         }

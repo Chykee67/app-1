@@ -19,13 +19,17 @@ export default function AllTasks(){
         return(
             <>
                 <div>
-                    <h1>All Tasks</h1>
+                    <h1 className="font-bold text-gray-700 text-2xl m-2">All Tasks</h1>
                 </div>
                 <div>
-                    <ol>
+                    <ol className="pl-2">
                         {tasks.map((task, index) => (
-                            <li key={index}>
-                                <TaskBrief title={task.node.title} due={task.node.due} />
+                            <li key={index} className="mt-3">
+                                <TaskBrief
+                                    title={task.node.title}
+                                    due={task.node.due}
+                                    status={task.node.status.toLowerCase()}
+                                />
                             </li>
                         ))}
                     </ol>

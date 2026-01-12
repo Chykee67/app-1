@@ -1,40 +1,65 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { DELETE_TASK, UPDATE_TASK_STATUS } from "../mutations";
+import { makeClient } from "@/app/lib/ApolloWrapper";
 
-export default function TaskBrief({title, due}) {
+export default function TaskBrief({title, due, status}) {
+
     const dueDate = new Date(due);
-    const now = new Date();
-    const [timeRemaining, setTimeRemaining] = useState(null);
+    
+    const client = makeClient()
 
-    const timeRef = useRef(dueDate - now);
+    const handleDelete = () => {
+        (async () => {
+            await client.mutate({
+                mutation: DELETE_TASK,
+                variables: { title: title }
+            })
+            window.location.reload();
+        })();
+    }
 
-    const formatTimeRemaining = (milliseconds) => {
-        if (milliseconds <= 0) {
-            return "Past due";
-        }
-        const totalSeconds = Math.floor(milliseconds / 1000);
-        const days = Math.floor(totalSeconds / 86400);
-        const hours = Math.floor((totalSeconds % 86400) / 3600);
-        const minutes = Math.floor((totalSeconds % 3600) / 60);
-        const seconds = totalSeconds % 60;
+    const handleDetails = () => {
+        window.open(
+            `/todoapp/task-details/${title}`,
+            "mypopup",
+            "width=500,height=400,resizable=yes,scrollbars=yes",
+        );
+    }
 
-        return `${days}d ${hours}h ${minutes}m ${seconds}s`;
-    };
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            // Force re-render to update time remaining
-            setTimeRemaining(timeRef.current = dueDate - new Date());
-        }, 1000);
-        return () => clearInterval(interval);
-    }, [timeRef.current]);
+    const updateStatus = () => {
+        (async () => {
+            await client.mutate({
+                mutation: UPDATE_TASK_STATUS,
+                variables: { title: title, status: status === "pending" ? "completed" : "pending" }
+            })
+            window.location.reload();
+        })();
+    }
 
     return (
-        <div className="task-brief">
-            <p>{title}</p>
-            <p>Due: {dueDate.toString()}</p>
-            <p>Time Remaining: {formatTimeRemaining(timeRemaining)}</p>
+        <div className="inline-block">
+            <p className="text-black font-bold font-sans">
+                <span>{title.toUpperCase()}</span>
+                <button className="ml-7 hover:text-rose-700" onClick={handleDetails}>details</button>
+                <button className="ml-7 hover:text-rose-700" onClick={handleDelete}>delete</button>
+            </p>
+            <p className="text-gray-700 font-bold font-serif">Due: {dueDate.toString()}</p>
+            <p className="font-bold font-serif text-gray-700">Time Left:
+                {dueDate - new Date() <= 0 ? " Past due" : ` ${Math.floor((dueDate - new Date()) / 1000 / 60 / 60 / 24)} days
+                ${Math.floor((dueDate - new Date()) / 1000 / 60 / 60 % 24)} hours till due`
+                }
+            </p>
+            <div>
+                {status === "pending" &&
+                    <button
+                        className="font-sans font-bold hover:text-rose-700"
+                        onClick={updateStatus}
+                    >
+                        Mark as Completed
+                    </button>
+                }
+            </div>
         </div>
     );
 }

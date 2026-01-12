@@ -11,6 +11,7 @@ import {    GET_REFRESH_TOKEN,
 
 import { GETJWTREFRESHTOKEN } from './actions'
 import { LOGIN } from './graphql_mutations'
+import { SET_TIMEZONE } from '../todoapp/mutations'
 
 
 export const AuthContext = createContext(null)
@@ -33,7 +34,7 @@ export const AuthProvider = ({ children }) => {
                 })
 
                 if (loginData.tokenAuth.token){
-                    window.location.href = '/todoapp/profile';
+                    
 
                 }else{}
 

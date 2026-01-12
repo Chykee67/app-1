@@ -14,11 +14,11 @@ class Task(models.Model):
     priority = models.CharField(
         max_length=6,
         choices=(
-            ('Low', 'Low'),
-            ('Normal', 'Normal'),
-            ('High', 'High')
+            ('low', 'low'),
+            ('normal', 'normal'),
+            ('high', 'high')
         ),
-        default='Normal',
+        default='normal',
     )
     
     #category = models.CharField(max_length=50) #in future with ability to create userdefined categories
@@ -26,10 +26,10 @@ class Task(models.Model):
     status = models.CharField(
         max_length=9,
         choices=(
-            ('Pending', 'Pending'),
-            ('Completed', 'Completed')
+            ('pending', 'pending'),
+            ('completed', 'completed')
         ),
-        default='Pending',
+        default='pending',
     )
     
     created = models.DateTimeField(auto_now_add=True)
@@ -41,7 +41,7 @@ class Task(models.Model):
                                    )
 
     class Meta:
-        ordering = ["created", "due"]
+        ordering = ["due"]
 
 
     def __str__(self):

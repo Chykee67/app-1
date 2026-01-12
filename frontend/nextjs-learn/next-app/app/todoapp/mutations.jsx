@@ -28,28 +28,48 @@ export const SIGNUP_MUTATION = gql`
     }
     `;
 
-    export const UploadFileMutation = gql`
-    mutation UploadFile($file: Upload!){
-        uploadFile(file: $file){
-            success
-        }
+export const UploadFileMutation = gql`
+mutation UploadFile($file: Upload!){
+    uploadFile(file: $file){
+        success
     }
-    `;
+}
+`;
 
-    export const CREATE_TASK = gql`
-        mutation CreateTask($title: String!, $description: String!, $due: DateTime!, $priority: String){
-            createTask(input: {
-                title: $title,
-                description: $description,
-                due: $due
-                priority: $priority
-            }){
-                task{
-                    title
-                    description
-                    due
-                    priority
-                }
+
+export const CREATE_TASK = gql`
+    mutation CreateTask($title: String!, $description: String!, $due: DateTime!, $priority: String){
+        createTask(input: {
+            title: $title,
+            description: $description,
+            due: $due
+            priority: $priority
+        }){
+            task{
+                title
+                description
+                due
+                priority
             }
         }
-    `
+    }
+`
+
+export const DELETE_TASK = gql`
+    mutation DeleteTask($title: String!){
+        deleteTask(input: {title: $title}){
+            deleted
+        }
+    }
+`
+
+export const UPDATE_TASK_STATUS = gql`
+    mutation UpdateTaskStatus($title: String!, $status: String!){
+        updateTaskStatus(input: {
+            title: $title,
+            status: $status
+        }){
+            message
+        }
+    }
+`;

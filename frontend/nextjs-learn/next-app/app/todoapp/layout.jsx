@@ -38,6 +38,18 @@ export default function TODOAPPLAYOUT({children}){
     if (loading) {
         return <p>Loading...</p>;
     }
+
+    if (pathname.includes("task-details")){
+        return(
+            <>
+                <div>
+                    <SITE_BANNER />
+                </div>
+
+                {children}
+            </>
+        )
+    }
     
     if (pathname !== '/todoapp/signin' && pathname !== '/todoapp/signup' && data?.profile?.user?.username){
         const username = data.profile.user.username;
